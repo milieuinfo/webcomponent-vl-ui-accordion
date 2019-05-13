@@ -1,0 +1,54 @@
+{
+  "name": "vl-ui-accordion",
+  "version": "0.0.0",
+  "description": "Gebruik de accordion om informatie te tonen of te verbergen aan de hand van een toggle.",
+  "main": "vl-accordion.js",
+  "author": "DIDM",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/milieuinfo/webcomponent-vl-ui-accordion.git"
+  },
+  "homepage": "https://github.com/milieuinfo/webcomponent-vl-ui-accordion#readme",
+  "publishConfig": {
+    "registry": "http://artifactory-pr-build.lb.cumuli.be:8081/artifactory/api/npm/acd-npm/"
+  },
+  "scripts": {
+    "prepare": "npm run prepare:util",
+    "prepare:util": "npm explore vl-ui-util -- npm run util",
+    "test": "wct -l chrome,firefox --npm",
+    "release": "np",
+    "release:prepare": "npm run release:prepare:build && npm run release:prepare:imports && npm run release:prepare:css && npm run release:prepare:commit",
+    "release:prepare:build": "uglifyjs --compress --mangle --output vl-accordion.js -- *.src.js",
+    "release:prepare:imports": "replace '/node_modules/vl-ui-core/vl-core.src.js' '/node_modules/vl-ui-core/vl-core.js' vl-accordion.js",
+    "release:prepare:css": "replace '\\.\\./style.css' '/node_modules/vl-ui-accordion/style.css' vl-accordion.js",
+    "release:prepare:commit": "git add -f vl-accordion.js && git commit --amend --no-edit && git pull",
+    "release:testless": "np --yolo",
+    "demo": "http-server"
+  },
+  "dependencies": {
+    "vl-ui-core": "1.3.3",
+    "vl-ui-button": "1.0.3",
+    "vl-ui-icon": "2.0.1"
+  },
+  "peerDependencies": {
+    "vl-ui-core": "1.3.3",
+    "vl-ui-button": "1.0.3",
+    "vl-ui-icon": "2.0.1"
+  },
+  "devDependencies": {
+    "@govflanders/vl-ui-accordion": "3.7.2",
+    "@govflanders/vl-ui-toggle": "3.7.2",
+    "@govflanders/vl-ui-link": "3.7.2",
+    "@govflanders/vl-ui-core": "3.7.2",
+    "@govflanders/vl-ui-util": "3.7.2",
+    "wct-browser-legacy": "1.0.2",
+    "web-component-tester": "6.9.2",
+    "replace": "1.0.0",
+    "np": "3.0.4",
+    "uglify-js-es6": "2.8.9",
+    "http-server": "0.11.1",
+    "vl-ui-util": "1.0.2",
+    "copyfiles": "2.1.0"
+  }
+}
