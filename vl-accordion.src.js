@@ -31,7 +31,7 @@ import '/node_modules/vl-ui-icon/vl-icon.js';
  */
 export class VlAccordion extends VlElement(HTMLElement) {
     static get _observedAttributes() {
-        return ['title'];
+        return ['toggle-text', 'open-toggle-text', 'close-toggle-text'];
     }
 
     constructor() {
@@ -43,7 +43,7 @@ export class VlAccordion extends VlElement(HTMLElement) {
             <div class="js">
                 <div data-vl-accordion>
                     <button data-vl-accordion-toggle>
-                        <span is="vl-icon" icon="arrow-right-fat" before></span><span id="title"></span>
+                        <span is="vl-icon" icon="arrow-right-fat" before></span><span></span>
                     </button>
                     <div class="vl-accordion__content">
                         <div class="vl-accordion__panel">
@@ -60,7 +60,15 @@ export class VlAccordion extends VlElement(HTMLElement) {
     }
 
     get _titleElement() {
-        return this._buttonElement.querySelector('#title');
+        return this._buttonElement.querySelector('span:not([is="vl-icon"]');
+    }
+
+    get _openToggleTextAttribute() {
+        return this.getAttribute('open-toggle-text');
+    }
+
+    get _closeToggleTextAttribute() {
+        return this.getAttribute('close-toggle-text');
     }
 
     dress() {
@@ -74,8 +82,18 @@ export class VlAccordion extends VlElement(HTMLElement) {
         this._buttonElement.classList.add('vl-link--bold');
     }
 
-    _titleChangedCallback(oldValue, newValue) {
-        this._titleElement.textContent = newValue;
+    _toggle_textChangedCallback(oldValue, newValue) {
+        this._titleElement.append(newValue);
+    }
+
+    _open_toggle_textChangedCallback(oldValue, newValue) {
+        this._titleElement.classList.add('js-vl-accordion__toggle__text');
+        this._titleElement.setAttribute('data-vl-accordion-open-text', newValue);
+    }
+
+    _close_toggle_textChangedCallback(oldValue, newValue) {
+        this._titleElement.classList.add('js-vl-accordion__toggle__text');
+        this._titleElement.setAttribute('data-vl-accordion-close-text', newValue);
     }
 }
 
