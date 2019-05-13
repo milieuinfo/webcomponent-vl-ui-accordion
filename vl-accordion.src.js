@@ -3,7 +3,7 @@ import '/node_modules/vl-ui-button/vl-button.js';
 import '/node_modules/vl-ui-icon/vl-icon.js';
 
 (() => {
-    loadScript('util.js', '../node_modules/@govflanders/vl-ui-util/dist/js/util.min.js', () => {
+    loadScript('util.js', '../node_modules/@govflanders/vl-ui-util/dist/js/util.js', () => {
         loadScript('accordion.js', '../node_modules/@govflanders/vl-ui-accordion/dist/js/accordion.js', () => {
             document.querySelectorAll('vl-accordion').forEach(accordion => {
                 accordion.dress();
@@ -30,6 +30,10 @@ import '/node_modules/vl-ui-icon/vl-icon.js';
  * @extends VlElement
  */
 export class VlAccordion extends VlElement(HTMLElement) {
+    static get _observedAttributes() {
+        return ['title'];
+    }
+
     constructor() {
         super(`
             <style>
@@ -39,11 +43,11 @@ export class VlAccordion extends VlElement(HTMLElement) {
             <div class="js">
                 <div data-vl-accordion>
                     <button data-vl-accordion-toggle>
-                        <span is="vl-icon" icon="arrow-right-fat" before></span>Lees meer over de onderwijsdoelstelling
+                        <span is="vl-icon" icon="arrow-right-fat" before></span><span id="title"></span>
                     </button>
                     <div class="vl-accordion__content">
                         <div class="vl-accordion__panel">
-                            Onderwijs helpt jonge mensen en volwassenen om zichzelf te ontwikkelen en hun weg te vinden in onze samenleving. Het hoger onderwijs speelt daarnaast een belangrijke rol in innovatie dankzij het belang van wetenschappelijk onderzoek.
+                            <slot></slot>
                         </div>
                     </div>
                 </div>
@@ -55,6 +59,10 @@ export class VlAccordion extends VlElement(HTMLElement) {
         return this._element.querySelector('button');
     }
 
+    get _titleElement() {
+        return this._buttonElement.querySelector('#title');
+    }
+
     dress() {
         vl.accordion.dress(this._element.querySelector('[data-vl-accordion]'));
     }
@@ -64,6 +72,10 @@ export class VlAccordion extends VlElement(HTMLElement) {
         this._buttonElement.classList.add('vl-toggle');
         this._buttonElement.classList.add('vl-link');
         this._buttonElement.classList.add('vl-link--bold');
+    }
+
+    _titleChangedCallback(oldValue, newValue) {
+        this._titleElement.textContent = newValue;
     }
 }
 
