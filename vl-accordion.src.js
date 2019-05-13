@@ -40,7 +40,7 @@ export class VlAccordion extends VlElement(HTMLElement) {
                 @import '../style.css';
             </style>
 
-            <div class="js">
+            <div class="js js-vl-accordion">
                 <div data-vl-accordion>
                     <button data-vl-accordion-toggle>
                         <span is="vl-icon" icon="arrow-right-fat" before></span><span></span>
@@ -54,7 +54,7 @@ export class VlAccordion extends VlElement(HTMLElement) {
             </div>
         `);
     }
-
+    
     get _buttonElement() {
         return this._element.querySelector('button');
     }
@@ -76,10 +76,7 @@ export class VlAccordion extends VlElement(HTMLElement) {
     }
 
     connectedCallback() {
-        this.classList.add('js');
-        this._buttonElement.classList.add('vl-toggle');
-        this._buttonElement.classList.add('vl-link');
-        this._buttonElement.classList.add('vl-link--bold');
+        this.__setClasses();
     }
 
     _toggle_textChangedCallback(oldValue, newValue) {
@@ -94,6 +91,13 @@ export class VlAccordion extends VlElement(HTMLElement) {
     _close_toggle_textChangedCallback(oldValue, newValue) {
         this._titleElement.classList.add('js-vl-accordion__toggle__text');
         this._titleElement.setAttribute('data-vl-accordion-close-text', newValue);
+    }
+
+    __setClasses() {
+        this.classList.add('js');
+        this._buttonElement.classList.add('vl-toggle');
+        this._buttonElement.classList.add('vl-link');
+        this._buttonElement.classList.add('vl-link--bold');
     }
 }
 
