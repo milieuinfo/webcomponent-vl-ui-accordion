@@ -28,6 +28,10 @@ import '/node_modules/vl-ui-icon/vl-icon.js';
  * @classdesc Deccordion component kan gebruikt worden om informatie te tonen of te verbergen aan de hand van een toggle. <a href="demo/vl-accordion.html">Demo</a>.
  * 
  * @extends VlElement
+ * 
+ * @property {string} toggle-text - Attribuut wordt gebruikt als tekst waarop de gebruiker kan klikken om de accordion te openen en te sluiten.
+ * @property {string} open-toggle-text - Attribuut wordt gebruikt als tekst wanneer de gebruiker de accordion geopend heeft.
+ * @property {string} close-toggle-text - Attribuut wordt gebruikt als tekst wanneer de gebruiker de accordion gesloten heeft.
  */
 export class VlAccordion extends VlElement(HTMLElement) {
     static get _observedAttributes() {
@@ -71,6 +75,11 @@ export class VlAccordion extends VlElement(HTMLElement) {
         return this.getAttribute('close-toggle-text');
     }
 
+    /**
+     * Activeer de accordion functionaliteit.
+     * 
+     * @return {void}
+     */
     dress() {
         vl.accordion.dress(this._element.querySelector('[data-vl-accordion]'));
     }
@@ -80,7 +89,7 @@ export class VlAccordion extends VlElement(HTMLElement) {
     }
 
     _toggle_textChangedCallback(oldValue, newValue) {
-        this._titleElement.append(newValue);
+        this._titleElement.textContent = newValue;
     }
 
     _open_toggle_textChangedCallback(oldValue, newValue) {
