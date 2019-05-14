@@ -64,7 +64,7 @@ export class VlAccordion extends VlElement(HTMLElement) {
     }
 
     get _titleElement() {
-        return this._buttonElement.querySelector('span:not([is="vl-icon"]');
+        return this._buttonElement.querySelector('span:not([is="vl-icon"])');
     }
 
     get _openToggleTextAttribute() {
