@@ -35,6 +35,7 @@
     <script>
       suite('<vl-accordion>', () => {
         const should = chai.should();
+        const sandbox = sinon.sandbox.create();
 
         test('bevat een container met de juiste class zodat de stijl goed toegepast wordt', () => {
           const accordion = fixture('vl-accordion-fixture');
@@ -92,6 +93,18 @@
           should.exist(slots);
           assert.lengthOf(slots, 1);
           assert.equal(slots[0].innerText, 'Dit is de content');
+        });
+
+        test('bij het toevoegen van een accordion element aan de DOM zal de dress functie aangeroepen worden zodat de accordion functionaliteit geactiveerd wordt', (done) => {
+          setTimeout(() => {
+            window.vl.accordion = {
+              dress: () => {
+                done();
+              }
+            };
+            const newAccordion = document.createElement('vl-accordion');
+            document.body.appendChild(newAccordion);
+          });
         });
       });
     </script>

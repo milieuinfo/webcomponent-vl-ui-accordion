@@ -81,11 +81,14 @@ export class VlAccordion extends VlElement(HTMLElement) {
      * @return {void}
      */
     dress() {
-        vl.accordion.dress(this._element.querySelector('[data-vl-accordion]'));
+        vl.accordion.dress(this._element.querySelector('[data-vl-accordion-toggle]'));
     }
 
     connectedCallback() {
         this.__setClasses();
+        if (window.vl && window.accordion) {
+            this.dress();
+        }
     }
 
     _toggle_textChangedCallback(oldValue, newValue) {
