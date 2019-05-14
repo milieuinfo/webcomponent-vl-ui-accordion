@@ -96,15 +96,15 @@
         });
 
         test('bij het toevoegen van een accordion element aan de DOM zal de dress functie aangeroepen worden zodat de accordion functionaliteit geactiveerd wordt', (done) => {
-          setTimeout(() => {
-            window.vl.accordion = {
+          window.vl = {
+            accordion: {
               dress: () => {
                 done();
               }
-            };
-            const newAccordion = document.createElement('vl-accordion');
-            document.body.appendChild(newAccordion);
-          });
+            }
+          };
+          const newAccordion = document.createElement('vl-accordion');
+          document.body.appendChild(newAccordion);
         });
       });
     </script>
