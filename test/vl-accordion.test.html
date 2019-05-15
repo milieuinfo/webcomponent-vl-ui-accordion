@@ -95,6 +95,54 @@
           assert.equal(slots[0].innerText, 'Dit is de content');
         });
 
+        test('kan programatorisch geopend worden', (done) => {
+          window.vl = {
+            accordion: {
+              open: () => {
+                done();
+              }
+            }
+          };
+          const accordion = fixture('vl-accordion-fixture-content');
+          accordion.open();
+        });
+
+        test('kan programatorisch gesloten worden', (done) => {
+          window.vl = {
+            accordion: {
+              close: () => {
+                done();
+              }
+            }
+          };
+          const accordion = fixture('vl-accordion-fixture-content');
+          accordion.close();
+        });
+
+        test('kan programatorisch geopend en gesloten worden op basis van de huidige status (open of gesloten) van de accordion', (done) => {
+          window.vl = {
+            accordion: {
+              toggle: () => {
+                done();
+              }
+            }
+          };
+          const accordion = fixture('vl-accordion-fixture-content');
+          accordion.toggle();
+        });
+
+        test('kan programatorisch geopend en gesloten worden op basis van de huidige status (open of gesloten) van de accordion', (done) => {
+          window.vl = {
+            accordion: {
+              close: () => {
+                done();
+              }
+            }
+          };
+          const accordion = fixture('vl-accordion-fixture-content');
+          accordion.close();
+        });
+
         test('bij het toevoegen van een accordion element aan de DOM zal de dress functie aangeroepen worden zodat de accordion functionaliteit geactiveerd wordt', (done) => {
           window.vl = {
             accordion: {

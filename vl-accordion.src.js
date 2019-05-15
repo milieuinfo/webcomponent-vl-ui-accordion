@@ -58,6 +58,10 @@ export class VlAccordion extends VlElement(HTMLElement) {
             </div>
         `);
     }
+
+    get _accordionElement() {
+        return this._element.querySelector('[data-vl-accordion]');
+    }
     
     get _buttonElement() {
         return this._element.querySelector('button');
@@ -81,7 +85,34 @@ export class VlAccordion extends VlElement(HTMLElement) {
      * @return {void}
      */
     dress() {
-        vl.accordion.dress(this._element.querySelector('[data-vl-accordion-toggle]'));
+        vl.accordion.dress(this._buttonElement);
+    }
+
+    /**
+     * Opent de accordion.
+     * 
+     * @return {void}
+     */
+    open() {
+        vl.accordion.open(this._accordionElement);
+    }
+
+    /**
+     * Sluit de accordion.
+     * 
+     * @return {void}
+     */
+    close() {
+        vl.accordion.close(this._accordionElement);
+    }
+
+    /**
+     * Opent of sluit de accordion afhankelijk van de huidige status (open of gesloten) van de accordion.
+     * 
+     * @return {void}
+     */
+    toggle() {
+        vl.accordion.toggle(this._accordionElement);
     }
 
     connectedCallback() {
