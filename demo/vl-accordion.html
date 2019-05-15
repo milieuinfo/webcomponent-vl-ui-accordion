@@ -44,5 +44,65 @@
                 </vl-accordion>
             </div>
         </div>
+
+        <div>
+            <h2>Accordion via JavaScript openen en sluiten</h2>
+            <pre>
+                <code class="line-numbers language-markup">
+                    &lt;vl-accordion id="accordion-javascript-toggle" toggle-text="Lees meer over de onderwijsdoelstelling"&gt;
+                        &lt;span&gt;Onderwijs helpt jonge mensen en volwassenen om zichzelf te ontwikkelen en hun weg te vinden in onze samenleving. Het hoger onderwijs speelt daarnaast een belangrijke rol in innovatie dankzij het belang van wetenschappelijk onderzoek.&lt;/span&gt;
+                    &lt;/vl-accordion&gt;
+
+                    &lt;button onclick="openAccordion(event)"&gt;Open&lt;/button&gt;
+                    &lt;button onclick="closeAccordion(event)"&gt;Close&lt;/button&gt;
+                    &lt;button onclick="toggleAccordion(event)"&gt;Toggle&lt;/button&gt;
+
+                    &lt;script&gt;
+                        function getAccordionElement() {
+                            return document.querySelector("#accordion-javascript-toggle");
+                        }
+
+                        function openAccordion() {
+                            getAccordionElement().open();
+                        }
+
+                        function closeAccordion() {
+                            getAccordionElement().close();
+                        }
+
+                        function toggleAccordion() {
+                            getAccordionElement().toggle();
+                        }
+                    &lt;/script&gt;
+                </code>
+            </pre>
+            <div class="demo">
+                <vl-accordion id="accordion-javascript-toggle" toggle-text="Lees meer over de onderwijsdoelstelling">
+                    <span>Onderwijs helpt jonge mensen en volwassenen om zichzelf te ontwikkelen en hun weg te vinden in onze samenleving. Het hoger onderwijs speelt daarnaast een belangrijke rol in innovatie dankzij het belang van wetenschappelijk onderzoek.</span>
+                </vl-accordion>
+
+                <button onclick="openAccordion(event)">Open</button>
+                <button onclick="closeAccordion(event)">Close</button>
+                <button onclick="toggleAccordion(event)">Toggle</button>
+
+                <script>
+                    function getAccordionElement() {
+                        return document.querySelector("#accordion-javascript-toggle");
+                    }
+
+                    function openAccordion() {
+                        getAccordionElement().open();
+                    }
+
+                    function closeAccordion() {
+                        getAccordionElement().close();
+                    }
+
+                    function toggleAccordion() {
+                        getAccordionElement().toggle();
+                    }
+                </script>
+            </div>
+        </div>
     </body>
 </html>
