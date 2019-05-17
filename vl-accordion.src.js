@@ -1,4 +1,4 @@
-import { VlElement } from '/node_modules/vl-ui-core/vl-core.js';
+import { VlRegisterElement, VlElement } from '/node_modules/vl-ui-core/vl-core.js';
 import '/node_modules/vl-ui-button/vl-button.js';
 import '/node_modules/vl-ui-icon/vl-icon.js';
 
@@ -6,7 +6,9 @@ import '/node_modules/vl-ui-icon/vl-icon.js';
     loadScript('util.js', '../node_modules/@govflanders/vl-ui-util/dist/js/util.js', () => {
         loadScript('accordion.js', '../node_modules/@govflanders/vl-ui-accordion/dist/js/accordion.js', () => {
             document.querySelectorAll('vl-accordion').forEach(accordion => {
-                accordion.dress();
+                if (accordion.dress) {
+                    accordion.dress();
+                }
             });
         });
     });
@@ -144,4 +146,6 @@ export class VlAccordion extends VlElement(HTMLElement) {
     }
 }
 
-customElements.define('vl-accordion', VlAccordion);
+VlRegisterElement(() => {
+    customElements.define('vl-accordion', VlAccordion);
+});
