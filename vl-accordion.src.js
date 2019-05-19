@@ -1,4 +1,4 @@
-import { VlRegisterElement, VlElement } from '/node_modules/vl-ui-core/vl-core.js';
+import { VlElement } from '/node_modules/vl-ui-core/vl-core.js';
 import '/node_modules/vl-ui-button/vl-button.js';
 import '/node_modules/vl-ui-icon/vl-icon.js';
 
@@ -146,6 +146,4 @@ export class VlAccordion extends VlElement(HTMLElement) {
     }
 }
 
-VlRegisterElement(() => {
-    customElements.define('vl-accordion', VlAccordion);
-});
+customElements.define('vl-accordion', VlAccordion);

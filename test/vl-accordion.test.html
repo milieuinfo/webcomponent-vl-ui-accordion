@@ -32,18 +32,10 @@
       </template>
     </test-fixture>
 
-    <script type="module">
-      import { VlRegisterElement } from '/node_modules/vl-ui-core/vl-core.js';
-
+    <script>
       suite('<vl-accordion>', () => {
         const should = chai.should();
         const sandbox = sinon.sandbox.create();
-
-        suiteSetup((done) => {
-          VlRegisterElement(() => {
-            done();
-          });
-        });
 
         test('bevat een container met de juiste class zodat de stijl goed toegepast wordt', () => {
           const accordion = fixture('vl-accordion-fixture');
