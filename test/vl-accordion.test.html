@@ -55,6 +55,9 @@
 
           should.exist(button);
           assert.isDefined(button.getAttribute('data-vl-accordion-toggle'));
+          assert.isTrue(button.classList.contains('vl-toggle'));
+          assert.isTrue(button.classList.contains('vl-link'));
+          assert.isTrue(button.classList.contains('vl-link--bold'));
 
           should.exist(icon);
           assert.equal(icon.getAttribute('icon'), 'arrow-right-fat');

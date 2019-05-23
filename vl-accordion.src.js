@@ -5,11 +5,6 @@ import '/node_modules/vl-ui-icon/vl-icon.js';
 (() => {
     loadScript('util.js', '../node_modules/@govflanders/vl-ui-util/dist/js/util.js', () => {
         loadScript('accordion.js', '../node_modules/@govflanders/vl-ui-accordion/dist/js/accordion.js', () => {
-            document.querySelectorAll('vl-accordion').forEach(accordion => {
-                if (accordion.dress) {
-                    accordion.dress();
-                }
-            });
         });
     });
   
@@ -61,6 +56,8 @@ export class VlAccordion extends VlElement(HTMLElement) {
         `);
     }
 
+
+
     get _accordionElement() {
         return this._element.querySelector('[data-vl-accordion]');
     }
@@ -81,13 +78,24 @@ export class VlAccordion extends VlElement(HTMLElement) {
         return this.getAttribute('close-toggle-text');
     }
 
+    get _dressedAttribute() {
+        return this.getAttribute('data-vl-accordion-dressed');
+    }
+
     /**
      * Activeer de accordion functionaliteit.
      * 
      * @return {void}
      */
     dress() {
-        vl.accordion.dress(this._buttonElement);
+        if (!this._isDressed()) {
+            (async() => {
+                while(!window.vl || !window.vl.accordion) {
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                }
+                vl.accordion.dress(this._buttonElement);
+            })();
+        }
     }
 
     /**
@@ -119,9 +127,11 @@ export class VlAccordion extends VlElement(HTMLElement) {
 
     connectedCallback() {
         this.__setClasses();
-        if (window.vl && window.accordion) {
-            this.dress();
-        }
+        this.dress();
+    }
+
+    _isDressed() {
+        return !!this._dressedAttribute;
     }
 
     _toggle_textChangedCallback(oldValue, newValue) {
