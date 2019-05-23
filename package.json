@@ -1,6 +1,6 @@
 {
   "name": "vl-ui-accordion",
-  "version": "0.1.6",
+  "version": "1.0.0",
   "description": "Gebruik de accordion om informatie te tonen of te verbergen aan de hand van een toggle.",
   "main": "vl-accordion.js",
   "author": "DIDM",
