@@ -4,8 +4,7 @@ import '/node_modules/vl-ui-icon/vl-icon.js';
 
 (() => {
     loadScript('util.js', '../node_modules/@govflanders/vl-ui-util/dist/js/util.js', () => {
-        loadScript('accordion.js', '../node_modules/@govflanders/vl-ui-accordion/dist/js/accordion.js', () => {
-        });
+        loadScript('accordion.js', '../node_modules/@govflanders/vl-ui-accordion/dist/js/accordion.js')
     });
   
     function loadScript(id, src, onload) {
@@ -56,8 +55,6 @@ export class VlAccordion extends VlElement(HTMLElement) {
         `);
     }
 
-
-
     get _accordionElement() {
         return this._element.querySelector('[data-vl-accordion]');
     }
@@ -88,14 +85,14 @@ export class VlAccordion extends VlElement(HTMLElement) {
      * @return {void}
      */
     dress() {
-        if (!this._isDressed()) {
-            (async() => {
-                while(!window.vl || !window.vl.accordion) {
-                    await new Promise(resolve => setTimeout(resolve, 100));
-                }
+        (async() => {
+            while(!window.vl || !window.vl.accordion) {
+                await new Promise(resolve => setTimeout(resolve, 100));
+            }
+            if (!this._isDressed()) {
                 vl.accordion.dress(this._buttonElement);
-            })();
-        }
+            }
+        })();
     }
 
     /**
