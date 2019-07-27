@@ -1,30 +1,14 @@
-import { VlElement } from '/node_modules/vl-ui-core/vl-core.js';
+import {define, VlElement} from '/node_modules/vl-ui-core/vl-core.js';
 import '/node_modules/vl-ui-button/vl-button.js';
 import '/node_modules/vl-ui-icon/vl-icon.js';
-
-(() => {
-    loadScript('util.js', '../node_modules/@govflanders/vl-ui-util/dist/js/util.js', () => {
-        loadScript('accordion.js', '../node_modules/@govflanders/vl-ui-accordion/dist/js/accordion.js')
-    });
-  
-    function loadScript(id, src, onload) {
-        if (!document.head.querySelector('#' + id)) {
-            let script = document.createElement('script');
-            script.setAttribute('id', id);
-            script.setAttribute('src', src);
-            script.onload = onload;
-            document.head.appendChild(script);
-        }
-    }
- })();
 
 /**
  * VlAccordion
  * @class
  * @classdesc Deccordion component kan gebruikt worden om informatie te tonen of te verbergen aan de hand van een toggle. <a href="demo/vl-accordion.html">Demo</a>.
- * 
+ *
  * @extends VlElement
- * 
+ *
  * @property {string} toggle-text - Attribuut wordt gebruikt als tekst waarop de gebruiker kan klikken om de accordion te openen en te sluiten.
  * @property {string} open-toggle-text - Attribuut wordt gebruikt als tekst wanneer de gebruiker de accordion geopend heeft.
  * @property {string} close-toggle-text - Attribuut wordt gebruikt als tekst wanneer de gebruiker de accordion gesloten heeft.
@@ -58,7 +42,7 @@ export class VlAccordion extends VlElement(HTMLElement) {
     get _accordionElement() {
         return this._element.querySelector('[data-vl-accordion]');
     }
-    
+
     get _buttonElement() {
         return this._element.querySelector('button');
     }
@@ -81,23 +65,18 @@ export class VlAccordion extends VlElement(HTMLElement) {
 
     /**
      * Activeer de accordion functionaliteit.
-     * 
+     *
      * @return {void}
      */
     dress() {
-        (async() => {
-            while(!window.vl || !window.vl.accordion) {
-                await new Promise(resolve => setTimeout(resolve, 100));
-            }
-            if (!this._isDressed()) {
-                vl.accordion.dress(this._buttonElement);
-            }
-        })();
+        if (!this._isDressed()) {
+            vl.accordion.dress(this._buttonElement);
+        }
     }
 
     /**
      * Opent de accordion.
-     * 
+     *
      * @return {void}
      */
     open() {
@@ -106,7 +85,7 @@ export class VlAccordion extends VlElement(HTMLElement) {
 
     /**
      * Sluit de accordion.
-     * 
+     *
      * @return {void}
      */
     close() {
@@ -115,7 +94,7 @@ export class VlAccordion extends VlElement(HTMLElement) {
 
     /**
      * Opent of sluit de accordion afhankelijk van de huidige status (open of gesloten) van de accordion.
-     * 
+     *
      * @return {void}
      */
     toggle() {
@@ -153,4 +132,50 @@ export class VlAccordion extends VlElement(HTMLElement) {
     }
 }
 
-customElements.define('vl-accordion', VlAccordion);
+(() => {
+
+    // cfr https://www.html5rocks.com/en/tutorials/speed/script-loading/
+    // download as fast as possible in the provided order
+
+    const awaitScript = (id, src) => {
+        if (document.head.querySelector('#' + id)) {
+            console.log(`script with id '${id}' is already loaded`);
+            return Promise.resolve();
+        }
+
+        let script = document.createElement('script');
+        script.id = id;
+        script.src = src;
+        script.async = false;
+
+        const promise = new Promise((resolve, reject) => {
+            script.onload = () => {
+                resolve();
+            };
+        });
+
+        document.head.appendChild(script);
+        return promise;
+    };
+
+    const awaitUntil = (condition) => {
+        return new Promise((resolve, reject) => {
+            (async () => {
+              console.log(`condition ${condition}` );
+                while (!condition()) {
+                    await new Promise(r => setTimeout(r, 50));
+                }
+                resolve();
+            })();
+        });
+    };
+
+    Promise.all([
+        awaitScript('util', '/node_modules/@govflanders/vl-ui-util/dist/js/util.min.js'),
+        awaitScript('accordion', '/node_modules/@govflanders/vl-ui-accordion/dist/js/accordion.js'),
+        awaitUntil(() => window.vl && window.vl.accordion)]
+    ).then(() => {
+      console.log(`vl-accordion is defined !!!`);
+        define('vl-accordion', VlAccordion);
+    });
+})();
