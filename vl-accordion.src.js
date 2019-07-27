@@ -175,7 +175,6 @@ export class VlAccordion extends VlElement(HTMLElement) {
         awaitScript('accordion', '/node_modules/@govflanders/vl-ui-accordion/dist/js/accordion.js'),
         awaitUntil(() => window.vl && window.vl.accordion)]
     ).then(() => {
-      console.log(`vl-accordion is defined !!!`);
         define('vl-accordion', VlAccordion);
     });
 })();
