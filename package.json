@@ -49,6 +49,6 @@
     "uglify-es": "github:mishoo/UglifyJS2#harmony",
     "vl-ui-util": "milieuinfo/webcomponent-vl-ui-util#UIG-177",
     "wct-browser-legacy": "1.0.2",
-    "didm-web-component-tester": "6.9.2"
+    "didm-web-component-tester": "6.9.3"
   }
 }
