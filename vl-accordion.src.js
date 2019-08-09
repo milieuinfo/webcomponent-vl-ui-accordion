@@ -43,7 +43,7 @@ export class VlAccordion extends VlElement(HTMLElement) {
             <div class="js js-vl-accordion">
                 <div data-vl-accordion>
                     <button data-vl-accordion-toggle>
-                        <span is="vl-icon" icon="arrow-right-fat" before></span><span></span>
+                        <span is="vl-icon" data-vl-icon="arrow-right-fat" data-vl-before></span><span></span>
                     </button>
                     <div class="vl-accordion__content">
                         <div class="vl-accordion__panel">
