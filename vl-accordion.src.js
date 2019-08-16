@@ -28,6 +28,8 @@ import '/node_modules/vl-ui-icon/vl-icon.js';
  * @property {string} toggle-text - Attribuut wordt gebruikt als tekst waarop de gebruiker kan klikken om de accordion te openen en te sluiten.
  * @property {string} open-toggle-text - Attribuut wordt gebruikt als tekst wanneer de gebruiker de accordion geopend heeft.
  * @property {string} close-toggle-text - Attribuut wordt gebruikt als tekst wanneer de gebruiker de accordion gesloten heeft.
+ * 
+ * @version <a href="http://www.github.com/milieuinfo/webcomponent-vl-ui-accordion/releases/latest">Release notes</a>
  */
 export class VlAccordion extends VlElement(HTMLElement) {
     static get _observedAttributes() {
