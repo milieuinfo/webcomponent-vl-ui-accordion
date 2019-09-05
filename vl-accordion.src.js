@@ -21,7 +21,7 @@ import '/node_modules/vl-ui-icon/vl-icon.js';
 /**
  * VlAccordion
  * @class
- * @classdesc Deccordion component kan gebruikt worden om informatie te tonen of te verbergen aan de hand van een toggle. <a href="demo/vl-accordion.html">Demo</a>.
+ * @classdesc Deccordion component kan gebruikt worden om informatie te tonen of te verbergen aan de hand van een toggle.
  * 
  * @extends VlElement
  * 
@@ -31,6 +31,7 @@ import '/node_modules/vl-ui-icon/vl-icon.js';
  * 
  * @see {@link https://www.github.com/milieuinfo/webcomponent-vl-ui-accordion/releases/latest|Release notes}
  * @see {@link https://www.github.com/milieuinfo/webcomponent-vl-ui-accordion/issues|Issues}
+ * @see {@link https://webcomponenten.omgeving.vlaanderen.be/demo/vl-accordion.html|Demo}
  * 
  */
 export class VlAccordion extends VlElement(HTMLElement) {
