@@ -42,7 +42,7 @@
     "@govflanders/vl-ui-link": "3.7.2",
     "@govflanders/vl-ui-toggle": "3.7.2",
     "@govflanders/vl-ui-util": "3.7.2",
-    "copyfiles": "2.1.0",
+    "copyfiles": "2.1.1",
     "http-server": "0.11.1",
     "np": "3.0.4",
     "replace": "1.1.0",
