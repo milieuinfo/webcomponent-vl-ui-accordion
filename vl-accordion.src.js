@@ -4,7 +4,7 @@ import '/node_modules/vl-ui-icon/vl-icon.js';
 
 (() => {
     loadScript('util.js', '../node_modules/@govflanders/vl-ui-util/dist/js/util.js', () => {
-        loadScript('accordion.js', '../node_modules/@govflanders/vl-ui-accordion/dist/js/accordion.js')
+        loadScript('accordion.js', '../dist/accordion.js');
     });
   
     function loadScript(id, src, onload) {
