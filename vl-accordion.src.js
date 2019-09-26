@@ -21,13 +21,18 @@ import '/node_modules/vl-ui-icon/vl-icon.js';
 /**
  * VlAccordion
  * @class
- * @classdesc Deccordion component kan gebruikt worden om informatie te tonen of te verbergen aan de hand van een toggle. <a href="demo/vl-accordion.html">Demo</a>.
+ * @classdesc Deccordion component kan gebruikt worden om informatie te tonen of te verbergen aan de hand van een toggle.
  * 
  * @extends VlElement
  * 
  * @property {string} toggle-text - Attribuut wordt gebruikt als tekst waarop de gebruiker kan klikken om de accordion te openen en te sluiten.
  * @property {string} open-toggle-text - Attribuut wordt gebruikt als tekst wanneer de gebruiker de accordion geopend heeft.
  * @property {string} close-toggle-text - Attribuut wordt gebruikt als tekst wanneer de gebruiker de accordion gesloten heeft.
+ * 
+ * @see {@link https://www.github.com/milieuinfo/webcomponent-vl-ui-accordion/releases/latest|Release notes}
+ * @see {@link https://www.github.com/milieuinfo/webcomponent-vl-ui-accordion/issues|Issues}
+ * @see {@link https://webcomponenten.omgeving.vlaanderen.be/demo/vl-accordion.html|Demo}
+ * 
  */
 export class VlAccordion extends VlElement(HTMLElement) {
     static get _observedAttributes() {
