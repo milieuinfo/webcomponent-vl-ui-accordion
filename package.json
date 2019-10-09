@@ -31,7 +31,7 @@
   "dependencies": {
     "@govflanders/vl-ui-accordion": "3.9.1",
     "vl-ui-button": "^1.1.12",
-    "vl-ui-core": "^2.0.0",
+    "vl-ui-core": "^2.1.0",
     "vl-ui-icon": "^2.1.0"
   },
   "peerDependencies": {
@@ -49,7 +49,7 @@
     "np": "3.1.0",
     "replace": "1.1.1",
     "uglify-es": "github:mishoo/UglifyJS2#harmony",
-    "vl-ui-util": "^2.0.5",
+    "vl-ui-util": "^2.0.7",
     "wct-browser-legacy": "1.0.2",
     "web-component-tester": "6.9.2"
   }
