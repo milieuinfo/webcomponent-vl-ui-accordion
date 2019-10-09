@@ -37,6 +37,10 @@
         const should = chai.should();
         const sandbox = sinon.sandbox.create();
 
+        setup((done) => {
+          customElements.whenDefined('vl-accordion').then(done);
+        });
+
         test('bevat een container met de juiste class zodat de stijl goed toegepast wordt', () => {
           const accordion = fixture('vl-accordion-fixture');
           accordion.classList.contains('js');
@@ -103,7 +107,8 @@
             accordion: {
               open: () => {
                 done();
-              }
+              },
+              dress: () => {}
             }
           };
           const accordion = fixture('vl-accordion-fixture-content');
@@ -115,7 +120,8 @@
             accordion: {
               close: () => {
                 done();
-              }
+              },
+              dress: () => {}
             }
           };
           const accordion = fixture('vl-accordion-fixture-content');
@@ -127,7 +133,8 @@
             accordion: {
               toggle: () => {
                 done();
-              }
+              },
+              dress: () => {}
             }
           };
           const accordion = fixture('vl-accordion-fixture-content');
@@ -139,7 +146,8 @@
             accordion: {
               close: () => {
                 done();
-              }
+              },
+              dress: () => {}
             }
           };
           const accordion = fixture('vl-accordion-fixture-content');
