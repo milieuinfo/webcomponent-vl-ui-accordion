@@ -1,22 +1,12 @@
-import { VlElement } from '/node_modules/vl-ui-core/vl-core.js';
+import { VlElement, define, awaitScript, awaitUntil } from '/node_modules/vl-ui-core/vl-core.js';
 import '/node_modules/vl-ui-button/vl-button.js';
 import '/node_modules/vl-ui-icon/vl-icon.js';
 
-(() => {
-    loadScript('util.js', '../node_modules/@govflanders/vl-ui-util/dist/js/util.js', () => {
-        loadScript('accordion.js', '../dist/accordion.js');
-    });
-  
-    function loadScript(id, src, onload) {
-        if (!document.head.querySelector('#' + id)) {
-            let script = document.createElement('script');
-            script.setAttribute('id', id);
-            script.setAttribute('src', src);
-            script.onload = onload;
-            document.head.appendChild(script);
-        }
-    }
- })();
+Promise.all([
+    awaitScript('util', '/node_modules/@govflanders/vl-ui-util/dist/js/util.js'),
+    awaitScript('accordion', '../dist/accordion.js'),
+    awaitUntil(() => window.vl && window.vl.accordion)
+]).then(() => define('vl-accordion', VlAccordion));
 
 /**
  * VlAccordion
@@ -90,14 +80,9 @@ export class VlAccordion extends VlElement(HTMLElement) {
      * @return {void}
      */
     dress() {
-        (async() => {
-            while(!window.vl || !window.vl.accordion) {
-                await new Promise(resolve => setTimeout(resolve, 100));
-            }
-            if (!this._isDressed()) {
-                vl.accordion.dress(this._buttonElement);
-            }
-        })();
+        if (!this._isDressed()) {
+            vl.accordion.dress(this._buttonElement);
+        }
     }
 
     /**
@@ -157,5 +142,3 @@ export class VlAccordion extends VlElement(HTMLElement) {
         this._buttonElement.classList.add('vl-link--bold');
     }
 }
-
-customElements.define('vl-accordion', VlAccordion);
