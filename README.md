@@ -1,5 +1,6 @@
 # vl-ui-accordion
 ![GitHub issues](https://img.shields.io/github/issues-raw/milieuinfo/webcomponent-vl-ui-accordion) ![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/milieuinfo/webcomponent-vl-ui-accordion) ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/milieuinfo/webcomponent-vl-ui-accordion)
+
 Gebruik de accordion om informatie te tonen of te verbergen aan de hand van een toggle.
 
 ## Installatie
