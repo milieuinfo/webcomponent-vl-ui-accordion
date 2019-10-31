@@ -4,8 +4,8 @@
 Gebruik de accordion om informatie te tonen of te verbergen aan de hand van een toggle.
 
 ## Installatie
-```
-npm install --save vl-ui-accordion
+``` bash
+$ npm install --save vl-ui-accordion
 ```
 
 ## API
@@ -13,16 +13,16 @@ De [API](https://webcomponenten.omgeving.vlaanderen.be/doc/VlAccordion.html) bev
 
 ## Demo
 De [demo](https://webcomponenten.omgeving.vlaanderen.be/demo/vl-accordion.html) pagina bevat een overzicht van de mogelijkheden met code voorbeelden. Lokaal opstarten kan met onderstaand [NPM](https://www.npmjs.com) script.
-```
-npm run demo
+``` bash
+$ npm run demo
 ```
 
 ## Testen
 De webcomponent bevat verschillende unit testen die bij elke commit geautomatiseerd in Chrome en Firefox draaien. Hierdoor kunnen we bij elke release een minimum aan kwaliteit garanderen. Later zullen er ook nog UI testen toegevoegd worden zodat al de functionaliteit uitgebreid getest wordt.
 
 De testen kunnen lokaal opgestart worden met onderstaand [NPM](https://www.npmjs.com) script.
-```
-npm run test
+``` bash
+$ npm run test
 ```
 
 ## Issues
