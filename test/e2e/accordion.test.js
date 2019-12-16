@@ -45,6 +45,9 @@ describe('vl-accordion', async () => {
     });
 
     it('als een dynamische accordion opent en sluit, verandert de linktext', async () => {
-        
+        assert.equal(await vlAccordionPage.getDynamischeAccordionLinktext(), 'Open de onderwijsdoelstelling');
+        await vlAccordionPage.openDynamischeAccordion();
+        assert.equal(await vlAccordionPage.getDynamischeAccordionLinktext(), 'Sluit de onderwijsdoelstelling');
+        await vlAccordionPage.sluitDynamischeAccordion
     });
 });
