@@ -25,7 +25,7 @@
                 </code>
             </pre>
             <div class="demo">
-                <vl-accordion toggle-text="Lees meer over de onderwijsdoelstelling">
+                <vl-accordion id="accordion-1" toggle-text="Lees meer over de onderwijsdoelstelling">
                     <span>Onderwijs helpt jonge mensen en volwassenen om zichzelf te ontwikkelen en hun weg te vinden in onze samenleving. Het hoger onderwijs speelt daarnaast een belangrijke rol in innovatie dankzij het belang van wetenschappelijk onderzoek.</span>
                 </vl-accordion>
             </div>
@@ -35,13 +35,13 @@
             <h2>Accordion dynamische toggle</h2>
             <pre>
                 <code class="line-numbers language-markup">
-                    &lt;vl-accordion toggle-text="Open de onderwijsdoelstelling" open-toggle-text="Sluit de onderwijsdoelstelling" close-toggle-text="Open de onderwijsdoelstelling"&gt;
+                    &lt;vl-accordion toggle-text="Open de onderwijsdoelstelling" open-toggle-text="Open de onderwijsdoelstelling" close-toggle-text="Close de onderwijsdoelstelling"&gt;
                         &lt;span&gt;Onderwijs helpt jonge mensen en volwassenen om zichzelf te ontwikkelen en hun weg te vinden in onze samenleving. Het hoger onderwijs speelt daarnaast een belangrijke rol in innovatie dankzij het belang van wetenschappelijk onderzoek.&lt;/span&gt;
                     &lt;/vl-accordion&gt;
                 </code>
             </pre>
             <div class="demo">
-                <vl-accordion toggle-text="Open de onderwijsdoelstelling" open-toggle-text="Sluit de onderwijsdoelstelling" close-toggle-text="Open de onderwijsdoelstelling">
+                <vl-accordion id="accordion-2" toggle-text="Open de onderwijsdoelstelling" open-toggle-text="Open de onderwijsdoelstelling" close-toggle-text="Sluit de onderwijsdoelstelling">
                     <span>Onderwijs helpt jonge mensen en volwassenen om zichzelf te ontwikkelen en hun weg te vinden in onze samenleving. Het hoger onderwijs speelt daarnaast een belangrijke rol in innovatie dankzij het belang van wetenschappelijk onderzoek.</span>
                 </vl-accordion>
             </div>
@@ -83,9 +83,9 @@
                     <span>Onderwijs helpt jonge mensen en volwassenen om zichzelf te ontwikkelen en hun weg te vinden in onze samenleving. Het hoger onderwijs speelt daarnaast een belangrijke rol in innovatie dankzij het belang van wetenschappelijk onderzoek.</span>
                 </vl-accordion>
 
-                <button is="vl-button" onclick="openAccordion(event)">Open</button>
-                <button is="vl-button" onclick="closeAccordion(event)">Close</button>
-                <button is="vl-button" onclick="toggleAccordion(event)">Toggle</button>
+                <button id="open-accordion" is="vl-button" onclick="openAccordion(event)">Open</button>
+                <button id="close-accordion" is="vl-button" onclick="closeAccordion(event)">Close</button>
+                <button id="toggle-accordion" is="vl-button" onclick="toggleAccordion(event)">Toggle</button>
 
                 <script>
                     function getAccordionElement() {
