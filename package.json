@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@govflanders/vl-ui-accordion": "3.9.1",
-    "vl-ui-button": "^1.3.0",
+    "vl-ui-button": "^2.0.0",
     "vl-ui-core": "^3.0.0",
     "vl-ui-icon": "^2.1.0"
   },
