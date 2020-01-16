@@ -4,7 +4,7 @@ import '/node_modules/vl-ui-icon/vl-icon.js';
 
 Promise.all([
     awaitScript('util', '/node_modules/@govflanders/vl-ui-util/dist/js/util.min.js'),
-    awaitScript('accordion', '../dist/accordion.js'),
+    awaitScript('accordion', '../../dist/accordion.js'),
     awaitUntil(() => window.vl && window.vl.accordion)
 ]).then(() => define('vl-accordion', VlAccordion));
 
