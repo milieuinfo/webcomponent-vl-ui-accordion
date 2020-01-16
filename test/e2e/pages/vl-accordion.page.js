@@ -12,7 +12,7 @@ class VlAccordionPage extends Page {
     }
 
     async _sluitAccordion(selector) {
-        return (await this._getAccordion(selector)).close();   
+        return (await this._getAccordion(selector)).close();
     }
 
     async _getLinktext() {
@@ -46,7 +46,7 @@ class VlAccordionPage extends Page {
     async openJSAccordionViaButton() {
         return (await this.driver.findElement(By.css('#open-accordion'))).click();
     }
-   
+
     async sluitStandaardAccordion() {
         return this._sluitAccordion('#accordion-1');
     }
@@ -63,8 +63,19 @@ class VlAccordionPage extends Page {
         return (await this.driver.findElement(By.css('#close-accordion'))).click();
     }
 
+    async _getToggleButton() {
+        return this.driver.findElement(By.css('#toggle-accordion'));
+    }
+
     async toggleJSAccordionViaButton() {
-        return (await this.driver.findElement(By.css('#toggle-accordion'))).click();
+        const accordion = await this.getJSAccordion();
+        if (accordion.isOpen()) {
+            await (await this._getToggleButton()).click();
+            return accordion._waitUntilHidden()
+        } else {
+            await (await this._getToggleButton()).click();
+            return accordion._waitUntilVisible();
+        }
     }
 
     async getDynamischeAccordionLinktext() {

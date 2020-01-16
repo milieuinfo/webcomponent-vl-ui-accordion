@@ -1,16 +1,29 @@
 const { VlElement } = require('vl-ui-core');
 const { By } = require('selenium-webdriver');
 class VlAccordion extends VlElement {  
-    constructor(driver, selector) {
-        super(driver, selector);
-    }
 
     async _getToggleButton() {
         return this.shadowRoot.findElement(By.css('#accordion-toggle'));
     }
 
     async _getContent() {
-        this.shadowRoot.findElement(By.css('#accordion-content'));
+        return this.shadowRoot.findElement(By.css('#accordion-content'));
+    }
+
+    async _waitUntilHidden() {
+        const content = await this._getContent();
+        const hidden = await content.getAttribute('aria-hidden');
+        return this.driver.wait(() => {
+            return hidden == "true"
+        }, 2000);
+    }
+
+    async _waitUntilVisible() {
+        const content = await this._getContent();
+        const hidden = await content.getAttribute('aria-hidden');
+        return this.driver.wait(() => {
+            return hidden == "false"
+        }, 2000);
     }
 
     async linkText() {
@@ -22,11 +35,23 @@ class VlAccordion extends VlElement {
     }
 
     async open() {
-        return (await this.isOpen()) ? Promise.resolve() : this.toggle();
+        const open = await this.isOpen()
+        if(open) {
+            return Promise.resolve();
+         } else {
+            await this.toggle();
+            return this._waitUntilVisible();
+         };
     }
 
     async close() {
-        return (await this.isClosed()) ? Promise.resolve() : this.toggle();
+        const closed = await this.isClosed();
+        if(closed) {
+            return Promise.resolve();
+        } else {
+            await this.toggle();
+            return this._waitUntilHidden();
+        }
     }
 
     async isOpen() {
