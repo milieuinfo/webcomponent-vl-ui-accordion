@@ -1,6 +1,6 @@
 const VlAccordion = require('../components/vl-accordion');
-const { Page, Config } = require('vl-ui-core');
-const { By, until } = require('selenium-webdriver');
+const { Page, Config } = require('vl-ui-core').Test;
+const { By } = require('selenium-webdriver');
 
 class VlAccordionPage extends Page {
     async _getAccordion(selector) {

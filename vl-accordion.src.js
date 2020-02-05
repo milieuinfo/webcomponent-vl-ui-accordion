@@ -1,9 +1,9 @@
-import { VlElement, define, awaitScript, awaitUntil } from '/node_modules/vl-ui-core/vl-core.js';
-import '/node_modules/vl-ui-button/vl-button.js';
-import '/node_modules/vl-ui-icon/vl-icon.js';
+import { VlElement, define, awaitScript, awaitUntil } from 'vl-ui-core';
+import 'vl-ui-button';
+import 'vl-ui-icon';
 
 Promise.all([
-    awaitScript('util', '/node_modules/@govflanders/vl-ui-util/dist/js/util.min.js'),
+    awaitScript('util', 'vl-ui-ui-util/dist/js/util.min.js'),
     awaitScript('accordion', '../../dist/accordion.js'),
     awaitUntil(() => window.vl && window.vl.accordion)
 ]).then(() => define('vl-accordion', VlAccordion));
@@ -142,3 +142,4 @@ export class VlAccordion extends VlElement(HTMLElement) {
         this._buttonElement.classList.add('vl-link--bold');
     }
 }
+
