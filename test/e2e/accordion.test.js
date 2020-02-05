@@ -1,5 +1,5 @@
 
-const { assert, driver } = require('vl-ui-core').Test;
+const { assert, driver } = require('vl-ui-core').Test.Setup;
 const VlAccordionPage = require('./pages/vl-accordion.page');
 
 describe('vl-accordion', async () => {
@@ -48,6 +48,10 @@ describe('vl-accordion', async () => {
         assert.equal(await vlAccordionPage.getDynamischeAccordionLinktext(), 'Open de onderwijsdoelstelling');
         await vlAccordionPage.openDynamischeAccordion();
         assert.equal(await vlAccordionPage.getDynamischeAccordionLinktext(), 'Sluit de onderwijsdoelstelling');
-        await vlAccordionPage.sluitDynamischeAccordion
+        await vlAccordionPage.sluitDynamischeAccordion();
+    });
+
+    after(async () => {
+        return driver.quit();
     });
 });
