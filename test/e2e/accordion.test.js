@@ -51,7 +51,10 @@ describe('vl-accordion', async () => {
         await vlAccordionPage.sluitDynamischeAccordion();
     });
 
-    after(async () => {
-        return driver.quit();
+    after((done) => { 
+        if (driver) {
+            driver.quit();
+        }
+        done();
     });
 });
