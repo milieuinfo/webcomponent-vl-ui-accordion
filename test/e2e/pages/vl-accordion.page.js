@@ -40,7 +40,7 @@ class VlAccordionPage extends Page {
     }
 
     async openJavascriptAccordion() {
-        return this._openAccordion('#accordion-javascript-toggle')
+        return this._openAccordion('#accordion-javascript-toggle');
     }
 
     async openJSAccordionViaButton() {
@@ -56,7 +56,7 @@ class VlAccordionPage extends Page {
     }
 
     async sluitJavascriptAccordion() {
-        return this._sluitAccordion('#accordion-javascript-toggle')
+        return this._sluitAccordion('#accordion-javascript-toggle');
     }
 
     async sluitJSAccordionViaButton() {
