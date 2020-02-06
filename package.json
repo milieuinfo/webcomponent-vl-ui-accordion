@@ -1,21 +1,24 @@
 {
   "name": "vl-ui-accordion",
-  "version": "2.0.0",
+  "version": "1.0.13",
   "description": "Gebruik de accordion om informatie te tonen of te verbergen aan de hand van een toggle.",
   "main": "./src/index.js",
+  "author": "DIDM",
+  "license": "MIT",
   "exports": {
     "require": "./index.js",
     "import": "./src/index.js",
     "node": "./index.js",
     "default": "./index.js"
   },
-  "author": "DIDM",
-  "license": "MIT",
+  "homepage": "https://github.com/milieuinfo/webcomponent-vl-ui-accordion#readme",
+  "bugs": {
+    "url": "https://github.com/milieuinfo/webcomponent-vl-ui-accordion/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/milieuinfo/webcomponent-vl-ui-accordion.git"
   },
-  "homepage": "https://github.com/milieuinfo/webcomponent-vl-ui-accordion#readme",
   "publishConfig": {
     "registry": "http://artifactory-pr-build.lb.cumuli.be:8081/artifactory/api/npm/acd-npm/"
   },
