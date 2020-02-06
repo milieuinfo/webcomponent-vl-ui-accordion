@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="nl">
 	<head>
-		<title>vl-button voorbeeld</title>
-    </head>
+        <title>vl-button voorbeeld</title>
+        
+        <script type="module" src="/src/vl-button.src.js"></script>
+        <script type="module" src="/node_modules/vl-ui-icon/vl-icon.js"></script>
+        <script type="module" src="demo.js"></script>
 
-    <script type="module" src="../vl-button.src.js"></script>
-    <script type="module" src="../node_modules/vl-ui-icon/vl-icon.js"></script>
-    <script type="module" src="demo.js"></script>
+        <link rel="stylesheet" type="text/css" href="/style.css"/>
+    </head>
 
 	<body>
         <h1>vl-ui-button demo</h1>
@@ -234,11 +236,11 @@
             <h2>Link button</h2>
             <pre>
                 <code class="line-numbers language-markup">
-                    &lt;a is="vl-link" id="button-a-link" block&gt;&lt;span is="vl-icon" icon="arrow-right-fat" before&gt;&lt;/span&gt;Ga naar startpagina&lt;/a&gt;
+                    &lt;a is="vl-link-button" href="#"&gt;Ga naar startpagina&lt;/a&gt;
                 </code>
             </pre>
             <div class="demo">
-                <a is="vl-link" id="button-a-link" block><span is="vl-icon" icon="arrow-right-fat" before></span>Ga naar startpagina</a>
+                <a id="button-a-link" is="vl-link-button" href="#">Ga naar startpagina</a>
             </div>
         </div>
 

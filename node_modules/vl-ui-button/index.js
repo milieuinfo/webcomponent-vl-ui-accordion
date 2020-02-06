@@ -1,3 +1,5 @@
 module.exports = { 
-    'VlButton': require('./test/e2e/components/vl-button')
+    Test: {
+        VlButton: require('./test/e2e/components/vl-button.js')
+    }
 }

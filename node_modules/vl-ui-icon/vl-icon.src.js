@@ -1,4 +1,4 @@
-import { NativeVlElement, define } from '/node_modules/vl-ui-core/vl-core.js';
+import { NativeVlElement, define } from 'vl-ui-core';
 
 /**
  * VlIcon
@@ -38,10 +38,6 @@ export class VlIcon extends NativeVlElement(HTMLSpanElement) {
         return 'vl-icon--';
     }
 
-    get _stylePath() {
-        return '../style.css';
-    }
-
     _iconChangedCallback(oldValue, newValue) {
         this._changeClass(this._element, oldValue, newValue, 'vl-vi-');
     };
@@ -78,3 +74,4 @@ export class VlIcon extends NativeVlElement(HTMLSpanElement) {
 }
 
 define('vl-icon', VlIcon, {extends: 'span'});
+

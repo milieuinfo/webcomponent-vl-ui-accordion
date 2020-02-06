@@ -1,5 +1,5 @@
-const { VlElement } = require('vl-ui-core');
-const { VlIcon } = require('vl-ui-icon');
+const { VlElement } = require('vl-ui-core').Test;
+const { VlIcon } = require('vl-ui-icon').Test;
 
 class VlButton extends VlElement {  
     constructor(driver, selector) {

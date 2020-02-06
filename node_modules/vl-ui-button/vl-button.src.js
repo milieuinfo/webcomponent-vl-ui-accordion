@@ -1,6 +1,6 @@
-import { NativeVlElement, define } from '/node_modules/vl-ui-core/vl-core.js';
-import { VlPillElement } from "/node_modules/vl-ui-pill/vl-pill.js";
-import { VlInputAddonElement } from "/node_modules/vl-ui-input-addon/vl-input-addon.js";
+import { NativeVlElement, define } from 'vl-ui-core';
+import { VlPillElement } from "vl-ui-pill";
+import { VlInputAddonElement } from "vl-ui-input-addon";
 
 export const VlButtonElement = (SuperClass) => {
     return class extends NativeVlElement(SuperClass) {

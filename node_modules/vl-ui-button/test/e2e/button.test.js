@@ -1,14 +1,12 @@
 
-const { assert, driver } = require('vl-ui-core').Test;
+const { assert, driver } = require('vl-ui-core').Test.Setup;
 const VlButtonPage = require('./pages/vl-button.page');
 
 describe('vl-button', async () => {
     const vlButtonPage = new VlButtonPage(driver);
 
-    before((done) => {
-        vlButtonPage.load().then(() => {
-            done()
-        });
+    before(() => {
+        return vlButtonPage.load();
     });
 
     it('als gebruiker wil ik dat mijn klik geregistreerd wordt wanneer ik op een knop klik', async () => {
@@ -54,13 +52,6 @@ describe('vl-button', async () => {
         await assert.eventually.equal(iconAfterButton.getText(), 'Contactpersoon opslaan');
         await assert.eventually.equal(iconAfterButtonIcon.isBefore(), false);
         await assert.eventually.equal(iconAfterButtonIcon.isAfter(), true);
-    });
-
-    it('als gebruiker wil ik het verschil kunnen zien tussen een block en een gewone knop', async () => {
-        const primaryButton = await vlButtonPage.getPrimaryButton();
-        const blockButton = await vlButtonPage.getBlockButton();
-        await assert.eventually.equal(primaryButton.isBlock(), false);
-        await assert.eventually.equal(blockButton.isBlock(), true);
     });
 
     it('als gebruiker wil ik het verschil kunnen zien tussen een block en een gewone knop', async () => {
@@ -124,13 +115,9 @@ describe('vl-button', async () => {
     it('als gebruiker wil ik het verschil kunnen zien tussen een link en een gewone knop', async () => {
         const primaryButton = await vlButtonPage.getPrimaryButton();
         const linkButton = await vlButtonPage.getLinkButton();
-        const linkButtonIcon = await linkButton.getIcon();
-        await assert.eventually.equal(primaryButton.isLink(), false, '1');
-        await assert.eventually.equal(primaryButton.hasIcon(), false), '2';
-        await assert.eventually.equal(linkButton.hasIcon(), true, '4');
-        await assert.eventually.equal(linkButton.getText(), 'Ga naar startpagina', '5');
-        await assert.eventually.equal(linkButtonIcon.isBefore(), true, '6');
-        await assert.eventually.equal(linkButtonIcon.getIcon(), 'arrow-right-fat');
+        await assert.eventually.equal(primaryButton.isLink(), false);
+        await assert.eventually.equal(primaryButton.hasIcon(), false);
+        await assert.eventually.equal(linkButton.getText(), 'Ga naar startpagina');
     });
 
     it('als gebruiker wil ik het verschil kunnen zien tussen een pill en een gewone knop', async () => {
@@ -181,5 +168,12 @@ describe('vl-button', async () => {
         await assert.eventually.equal(inputAddonButton.isInputAddon(), true);
         await assert.eventually.equal(inputAddonButton.hasText(), false);
         await assert.eventually.equal(inputAddonButtonIcon.getIcon(), 'location');
+    });
+
+    after((done) => { 
+        if (driver) {
+            driver.quit();
+        }
+        done();
     });
 });

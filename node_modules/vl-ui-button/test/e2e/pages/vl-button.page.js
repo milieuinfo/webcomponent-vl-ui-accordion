@@ -1,6 +1,5 @@
 const VlButton = require('../components/vl-button');
-const { Page } = require('vl-ui-core');
-const { Config } = require('vl-ui-core');
+const { Page, Config } = require('vl-ui-core').Test;
 
 class VlButtonPage extends Page {
     async _getButton(selector) {

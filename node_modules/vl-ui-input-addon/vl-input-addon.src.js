@@ -1,13 +1,9 @@
-import { NativeVlElement, define } from '/node_modules/vl-ui-core/vl-core.js';
+import { NativeVlElement, define } from 'vl-ui-core';
 
 export const VlInputAddonElement = (SuperClass) => {
     return class extends NativeVlElement(SuperClass) {
         connectedCallback() {
             this.classList.add('vl-input-addon');
-        }
-
-        get _stylePath() {
-            return '../style.css';
         }
     }
 }
