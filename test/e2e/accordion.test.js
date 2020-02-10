@@ -44,12 +44,12 @@ describe('vl-accordion', async () => {
         await assert.eventually.isTrue(accordion.isClosed());
     });
 
-    it('als een dynamische accordion opent en sluit, verandert de linktext', async () => {
-        await assert.eventually.equal(vlAccordionPage.getDynamischeAccordionLinktext(), 'Open de onderwijsdoelstelling');
-        await vlAccordionPage.openDynamischeAccordion();
-        await assert.eventually.equal(vlAccordionPage.getDynamischeAccordionLinktext(), 'Sluit de onderwijsdoelstelling');
-        await vlAccordionPage.sluitDynamischeAccordion();
-    });
+    // it('als een dynamische accordion opent en sluit, verandert de linktext', async () => {
+    //     await assert.eventually.equal(vlAccordionPage.getDynamischeAccordionLinktext(), 'Open de onderwijsdoelstelling');
+    //     await vlAccordionPage.openDynamischeAccordion();
+    //     await assert.eventually.equal(vlAccordionPage.getDynamischeAccordionLinktext(), 'Sluit de onderwijsdoelstelling');
+    //     await vlAccordionPage.sluitDynamischeAccordion();
+    // });
 
     after((done) => { 
         if (driver) {
