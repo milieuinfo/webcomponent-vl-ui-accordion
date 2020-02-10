@@ -2,7 +2,7 @@ import { VlElement, define } from '/node_modules/vl-ui-core/vl-core.js';
 import '/node_modules/vl-ui-button/vl-button.js';
 import '/node_modules/vl-ui-icon/vl-icon.js';
 import '/node_modules/@govflanders/vl-ui-util/dist/js/util.min.js';
-import '/dist/accordion.js';
+import '/node_modules/vl-ui-accordion/dist/accordion.js';
 
 /**
  * VlAccordion
