@@ -1,12 +1,8 @@
-import { VlElement, define, awaitScript, awaitUntil } from 'vl-ui-core';
+import { VlElement, define } from 'vl-ui-core';
 import 'vl-ui-button';
 import 'vl-ui-icon';
-
-Promise.all([
-    awaitScript('util', 'vl-ui-ui-util/dist/js/util.min.js'),
-    awaitScript('accordion', '../../dist/accordion.js'),
-    awaitUntil(() => window.vl && window.vl.accordion)
-]).then(() => define('vl-accordion', VlAccordion));
+import 'vl-ui-util/dist/js/util.min.js';
+import 'vl-ui-accordion/dist/accordion.js';
 
 /**
  * VlAccordion
@@ -143,3 +139,4 @@ export class VlAccordion extends VlElement(HTMLElement) {
     }
 }
 
+define('vl-accordion', VlAccordion);
