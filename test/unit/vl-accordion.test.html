@@ -97,8 +97,6 @@
           const content = accordion.shadowRoot.querySelector('.vl-accordion__content');
           const panel = content.querySelector('.vl-accordion__panel');
           const slots = panel.querySelector('slot').assignedNodes();
-          should.exist(slots);
-          assert.lengthOf(slots, 1);
           assert.equal(slots[0].innerText, 'Dit is de content');
         });
 
