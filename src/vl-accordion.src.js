@@ -2,7 +2,7 @@ import { VlElement, define } from '/node_modules/vl-ui-core/vl-core.js';
 import '/node_modules/vl-ui-button/vl-button.js';
 import '/node_modules/vl-ui-icon/vl-icon.js';
 import '/node_modules/@govflanders/vl-ui-util/dist/js/util.min.js';
-import '/node_modules/vl-ui-accordion/dist/accordion.js';
+import '/dist/accordion.js';
 
 /**
  * VlAccordion
@@ -28,7 +28,7 @@ export class VlAccordion extends VlElement(HTMLElement) {
     constructor() {
         super(`
             <style>
-                @import '/node_modules/vl-ui-accordion/style.css';
+                @import '../style.css';
             </style>
 
             <div class="js js-vl-accordion">

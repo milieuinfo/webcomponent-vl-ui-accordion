@@ -1,6 +1,6 @@
 const VlAccordion = require('../components/vl-accordion');
-const { Page, Config } = require('vl-ui-core');
-const { By, until } = require('selenium-webdriver');
+const { Page, Config } = require('vl-ui-core').Test;
+const { By } = require('selenium-webdriver');
 
 class VlAccordionPage extends Page {
     async _getAccordion(selector) {
@@ -40,7 +40,7 @@ class VlAccordionPage extends Page {
     }
 
     async openJavascriptAccordion() {
-        return this._openAccordion('#accordion-javascript-toggle')
+        return this._openAccordion('#accordion-javascript-toggle');
     }
 
     async openJSAccordionViaButton() {
@@ -56,7 +56,7 @@ class VlAccordionPage extends Page {
     }
 
     async sluitJavascriptAccordion() {
-        return this._sluitAccordion('#accordion-javascript-toggle')
+        return this._sluitAccordion('#accordion-javascript-toggle');
     }
 
     async sluitJSAccordionViaButton() {
