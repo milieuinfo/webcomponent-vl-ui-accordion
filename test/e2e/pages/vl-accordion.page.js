@@ -15,10 +15,6 @@ class VlAccordionPage extends Page {
         return (await this._getAccordion(selector)).close();   
     }
 
-    async _getLinktext() {
-        return this.getLinktext();
-    }
-
     async getStandaardAccordion() {
         return this._getAccordion('#accordion-1');
     }
