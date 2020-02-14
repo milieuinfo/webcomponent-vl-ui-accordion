@@ -28,7 +28,7 @@ export class VlAccordion extends VlElement(HTMLElement) {
     constructor() {
         super(`
             <style>
-                @import "/style.css";
+                @import '/style.css';
             </style>
 
             <div class="js js-vl-accordion">
