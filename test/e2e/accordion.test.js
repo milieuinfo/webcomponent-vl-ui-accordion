@@ -3,7 +3,7 @@ const { assert, driver } = require('vl-ui-core').Test.Setup;
 const VlAccordionPage = require('./pages/vl-accordion.page');
 
 describe('vl-accordion', async () => {
-    let vlAccordionPage = new VlAccordionPage(driver);
+    const vlAccordionPage = new VlAccordionPage(driver);
     
     beforeEach(() => {
         return vlAccordionPage.load();
