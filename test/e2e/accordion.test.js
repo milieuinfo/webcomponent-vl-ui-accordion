@@ -5,7 +5,7 @@ const VlAccordionPage = require('./pages/vl-accordion.page');
 describe('vl-accordion', async () => {
     let vlAccordionPage = new VlAccordionPage(driver);
     
-    before(() => {
+    beforeEach(() => {
         return vlAccordionPage.load();
     });
 
@@ -49,6 +49,10 @@ describe('vl-accordion', async () => {
         await vlAccordionPage.openDynamischeAccordion();
         await assert.eventually.equal(vlAccordionPage.getDynamischeAccordionLinktext(), 'Sluit de onderwijsdoelstelling');
         await vlAccordionPage.sluitDynamischeAccordion();
+    });
+
+    it('de content elements zijn raadpleegbaar', async () => {
+      await assert.eventually.include(vlAccordionPage.getStandaardAccordionTextContent(), 'Onderwijs helpt jonge mensen ');
     });
 
     after((done) => { 

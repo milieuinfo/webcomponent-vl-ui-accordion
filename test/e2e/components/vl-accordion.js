@@ -26,11 +26,22 @@ class VlAccordion extends VlElement {
     }
 
     async isOpen() {
-        return (await this.shadowRoot.findElement(By.css('#accordion-content'))).isDisplayed();
+        return (await this._content()).isDisplayed();
     }
     
     async isClosed() {
-        return !(await (await this.shadowRoot.findElement(By.css('#accordion-content'))).isDisplayed());
+        return !(await (await this._content()).isDisplayed());
+    }
+
+
+    async _content() {
+        return this.shadowRoot.findElement(By.css('#accordion-content'));
+    }
+
+    async contentElements() {
+        const slottedContent = await (await this._content()).findElement(By.css("#accordion-slot"));
+        return await this.driver.executeScript(
+            'return arguments[0].assignedElements()', slottedContent);
     }
 }
 

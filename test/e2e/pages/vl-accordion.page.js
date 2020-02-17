@@ -31,6 +31,11 @@ class VlAccordionPage extends Page {
         return this._openAccordion('#accordion-1');
     }
 
+    async getStandaardAccordionTextContent() {
+        return this.driver.executeScript('return arguments[0].textContent',
+            (await (await this.getStandaardAccordion()).contentElements())[0]);
+    }
+
     async openDynamischeAccordion() {
         return this._openAccordion('#accordion-2');
     }
