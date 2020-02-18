@@ -55,10 +55,5 @@ describe('vl-accordion', async () => {
       await assert.eventually.include(vlAccordionPage.getStandaardAccordionTextContent(), 'Onderwijs helpt jonge mensen ');
     });
 
-    after((done) => { 
-        if (driver) {
-            driver.quit();
-        }
-        done();
-    });
+    after(() => driver.quit());
 });

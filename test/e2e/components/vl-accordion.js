@@ -30,9 +30,8 @@ class VlAccordion extends VlElement {
     }
     
     async isClosed() {
-        return !(await (await this._content()).isDisplayed());
+        return !(await this.isOpen());
     }
-
 
     async _content() {
         return this.shadowRoot.findElement(By.css('#accordion-content'));
