@@ -1,12 +1,12 @@
 const { VlElement } = require('vl-ui-core').Test;
 const { By } = require('selenium-webdriver');
 class VlAccordion extends VlElement {  
-    constructor(driver, selector) {
-        super(driver, selector);
-    }
-
     async _getToggleButton() {
         return this.shadowRoot.findElement(By.css('#accordion-toggle'));
+    }
+
+    async _content() {
+        return this.shadowRoot.findElement(By.css('#accordion-content'));
     }
 
     async linkText() {
@@ -33,14 +33,13 @@ class VlAccordion extends VlElement {
         return !(await this.isOpen());
     }
 
-    async _content() {
-        return this.shadowRoot.findElement(By.css('#accordion-content'));
-    }
-
-    async contentElements() {
+    async contentSlotElements() {
         const slottedContent = await (await this._content()).findElement(By.css("#accordion-slot"));
-        return await this.driver.executeScript(
-            'return arguments[0].assignedElements()', slottedContent);
+        const slottedElements = await this.driver.executeScript('return arguments[0].assignedElements()', slottedContent);
+        const slottedVlElements = slottedElements.map((slot) => {
+            return new VlElement(this.driver, slot);
+        });
+        return Promise.all(slottedVlElements);
     }
 }
 
