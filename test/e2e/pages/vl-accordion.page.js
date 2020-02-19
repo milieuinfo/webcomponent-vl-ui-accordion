@@ -19,15 +19,15 @@ class VlAccordionPage extends Page {
         return this._getAccordion('#accordion-javascript-toggle');
     }
 
-    async getJSAcoordionOpenButton() {
+    async getJSAccordionOpenButton() {
         return this.driver.findElement(By.css('#open-accordion'));
     }
 
-    async getJSAcoordionCloseButton() {
+    async getJSAccordionCloseButton() {
         return this.driver.findElement(By.css('#close-accordion'));
     }
 
-    async getJSAcoordionToggleButton() {
+    async getJSAccordionToggleButton() {
         return this.driver.findElement(By.css('#toggle-accordion'));
     }
 
