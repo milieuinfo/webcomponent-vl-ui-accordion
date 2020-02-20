@@ -1,60 +1,67 @@
 
+const { VlElement } = require('vl-ui-core').Test;
 const { assert, driver } = require('vl-ui-core').Test.Setup;
 const VlAccordionPage = require('./pages/vl-accordion.page');
 
 describe('vl-accordion', async () => {
-    let vlAccordionPage = new VlAccordionPage(driver);
+    const vlAccordionPage = new VlAccordionPage(driver);
     
-    before(() => {
+    beforeEach(() => {
         return vlAccordionPage.load();
     });
 
     it('als gebruiker kan ik een standaard accordion openen en sluiten', async () => {
         const accordion = await vlAccordionPage.getStandaardAccordion();
         await assert.eventually.isTrue(accordion.isClosed());
-        await vlAccordionPage.openStandaardAccordion();
+        await accordion.open();
         await assert.eventually.isTrue(accordion.isOpen());
-        await vlAccordionPage.sluitStandaardAccordion();
+        await accordion.close();
         await assert.eventually.isTrue(accordion.isClosed());
     });
 
     it('als gebruiker kan ik een dynamische accordion openen en sluiten', async () => {
         const accordion = await vlAccordionPage.getDynamischeAccordion();
         await assert.eventually.isTrue(accordion.isClosed());
-        await vlAccordionPage.openDynamischeAccordion();
+        await accordion.open();
         await assert.eventually.isTrue(accordion.isOpen());
-        await vlAccordionPage.sluitDynamischeAccordion();
+        await accordion.close();
         await assert.eventually.isTrue(accordion.isClosed());
     });
 
-    it('als gebruiker kan ik een accordion via Javascript openen en suiten', async () => {
+    it('als gebruiker kan ik een accordion via Javascript openen en sluiten', async () => {
         const accordion = await vlAccordionPage.getJSAccordion();
         await assert.eventually.isTrue(accordion.isClosed());
-        await vlAccordionPage.openJavascriptAccordion();
+        await accordion.open();
         await assert.eventually.isTrue(accordion.isOpen());
-        await vlAccordionPage.sluitJavascriptAccordion();
+        await accordion.close();
         await assert.eventually.isTrue(accordion.isClosed());
-        await vlAccordionPage.openJSAccordionViaButton();
+
+        const openButton = await vlAccordionPage.getJSAccordionOpenButton();
+        const closeButton = await vlAccordionPage.getJSAccordionCloseButton();
+        const toggleButton = await vlAccordionPage.getJSAccordionToggleButton();
+        await openButton.click();
         await assert.eventually.isTrue(accordion.isOpen());
-        await vlAccordionPage.sluitJSAccordionViaButton();
+        await closeButton.click();
         await assert.eventually.isTrue(accordion.isClosed());
-        await vlAccordionPage.toggleJSAccordionViaButton();
+        await toggleButton.click();
         await assert.eventually.isTrue(accordion.isOpen());
-        await vlAccordionPage.toggleJSAccordionViaButton();
+        await toggleButton.click();
         await assert.eventually.isTrue(accordion.isClosed());
     });
 
-    it('als een dynamische accordion opent en sluit, verandert de linktext', async () => {
-        await assert.eventually.equal(vlAccordionPage.getDynamischeAccordionLinktext(), 'Open de onderwijsdoelstelling');
-        await vlAccordionPage.openDynamischeAccordion();
-        await assert.eventually.equal(vlAccordionPage.getDynamischeAccordionLinktext(), 'Sluit de onderwijsdoelstelling');
-        await vlAccordionPage.sluitDynamischeAccordion();
+    it('als gebruiker kan ik aan de tekst zien wanneer een dynamische accordion open of gesloten is', async () => {
+        const accordion = await vlAccordionPage.getDynamischeAccordion();
+        await assert.eventually.equal(accordion.linkText(), 'Open de onderwijsdoelstelling');
+        await accordion.open();
+        await assert.eventually.equal(accordion.linkText(), 'Sluit de onderwijsdoelstelling');
+        await accordion.close();
     });
 
-    after((done) => { 
-        if (driver) {
-            driver.quit();
-        }
-        done();
+    it('als gebruiker kan ik de inhoud van een accordion bekijken', async () => {
+        const accordion = await vlAccordionPage.getStandaardAccordion();
+        const slotElement = (await accordion.contentSlotElements())[0];
+        await assert.eventually.equal(slotElement.getText(), 'Onderwijs helpt jonge mensen en volwassenen om zichzelf te ontwikkelen en hun weg te vinden in onze samenleving. Het hoger onderwijs speelt daarnaast een belangrijke rol in innovatie dankzij het belang van wetenschappelijk onderzoek.');
     });
+
+    after(() => driver.quit());
 });
