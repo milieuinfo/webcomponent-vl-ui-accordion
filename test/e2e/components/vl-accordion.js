@@ -38,6 +38,7 @@ class VlAccordion extends VlElement {
         const slottedElements = await this.driver.executeScript('return arguments[0].assignedElements()', slottedContent);
         return Promise.all(slottedElements.map(slot => new VlElement(this.driver, slot)));
     }
+    
 }
 
 module.exports = VlAccordion;
