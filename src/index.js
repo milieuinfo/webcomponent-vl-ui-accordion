@@ -1,3 +1,3 @@
 module.exports = { 
-    VlAccordion: require('../vl-accordion.src.js').VlAccordion
+    VlAccordion: require('../dist/vl-accordion.src.js').VlAccordion
 }
