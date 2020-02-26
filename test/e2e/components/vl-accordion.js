@@ -9,6 +9,10 @@ class VlAccordion extends VlElement {
         return this.shadowRoot.findElement(By.css('#accordion-content'));
     }
 
+    async _accordionDiv() {
+        return this.shadowRoot.findElement(By.css('div[data-vl-accordion]'));
+    }
+
     async linkText() {
         return (await this.shadowRoot.findElement(By.css('.js-vl-accordion__toggle__text'))).getText();
     }
@@ -26,7 +30,9 @@ class VlAccordion extends VlElement {
     }
 
     async isOpen() {
-        return (await this._content()).isDisplayed();
+      let div = await this._accordionDiv();
+      let classes = (await div.getAttribute('class'));
+      return classes.indexOf('js-vl-accordion--open') !== -1;
     }
     
     async isClosed() {

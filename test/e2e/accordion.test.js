@@ -28,7 +28,7 @@ describe('vl-accordion', async () => {
         await assert.eventually.isTrue(accordion.isClosed());
     });
 
-    it.only('als gebruiker kan ik een accordion via Javascript openen en sluiten', async () => {
+    it('als gebruiker kan ik een accordion via Javascript openen en sluiten', async () => {
         const accordion = await vlAccordionPage.getJSAccordion();
         await assert.eventually.isTrue(accordion.isClosed());
         await accordion.open();
