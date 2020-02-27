@@ -20,16 +20,22 @@ class VlAccordionPage extends Page {
         return this._getAccordion('#accordion-javascript-toggle');
     }
 
-    async getJSAccordionOpenButton() {
-        return new VlButton(this.driver, '#open-accordion');
+    async clickJSAccordionOpenButton() {
+        return this._clickJSAccordionButton('#open-accordion');
     }
 
-    async getJSAccordionCloseButton() {
-        return new VlButton(this.driver, '#close-accordion');
+    async clickJSAccordionCloseButton() {
+        return this._clickJSAccordionButton('#close-accordion');
     }
 
-    async getJSAccordionToggleButton() {
-        return new VlButton(this.driver, '#toggle-accordion');
+    async clickJSAccordionToggleButton() {
+        return this._clickJSAccordionButton('#toggle-accordion');
+    }
+
+    async _clickJSAccordionButton(selector) {
+        const button = await new VlButton(this.driver, selector);
+        await button.scrollIntoView();
+        return button.click();
     }
 
     async load() {

@@ -30,8 +30,8 @@ class VlAccordion extends VlElement {
     }
 
     async isOpen() {
-      let div = await this._accordionDiv();
-      let classes = (await div.getAttribute('class'));
+      const div = await this._accordionDiv();
+      const classes = (await div.getAttribute('class'));
       return classes.indexOf('js-vl-accordion--open') !== -1;
     }
     
