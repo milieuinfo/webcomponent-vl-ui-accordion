@@ -21,15 +21,15 @@ class VlAccordionPage extends Page {
     }
 
     async clickJSAccordionOpenButton() {
-        return await this._clickJSAccordionButton('#open-accordion');
+        return this._clickJSAccordionButton('#open-accordion');
     }
 
     async clickJSAccordionCloseButton() {
-        return await this._clickJSAccordionButton('#close-accordion');
+        return this._clickJSAccordionButton('#close-accordion');
     }
 
     async clickJSAccordionToggleButton() {
-        return await this._clickJSAccordionButton('#toggle-accordion');
+        return this._clickJSAccordionButton('#toggle-accordion');
     }
 
   async _clickJSAccordionButton(selector) {
