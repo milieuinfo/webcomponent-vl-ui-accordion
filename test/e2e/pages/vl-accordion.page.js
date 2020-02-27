@@ -32,6 +32,10 @@ class VlAccordionPage extends Page {
         return new VlButton(this.driver, '#toggle-accordion');
     }
 
+    async scrollIntoView(element) {
+        return this.driver.executeScript('return arguments[0].scrollIntoView()', element);
+    }
+
     async load() {
         await super.load(Config.baseUrl + '/demo/vl-accordion.html');
     }

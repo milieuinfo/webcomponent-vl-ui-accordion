@@ -39,12 +39,16 @@ describe('vl-accordion', async () => {
         const openButton = await vlAccordionPage.getJSAccordionOpenButton();
         const closeButton = await vlAccordionPage.getJSAccordionCloseButton();
         const toggleButton = await vlAccordionPage.getJSAccordionToggleButton();
+        await vlAccordionPage.scrollIntoView(openButton);
         await openButton.click();
         await assert.eventually.isTrue(accordion.isOpen());
+        await vlAccordionPage.scrollIntoView(closeButton);
         await closeButton.click();
         await assert.eventually.isTrue(accordion.isClosed());
+        await vlAccordionPage.scrollIntoView(toggleButton);
         await toggleButton.click();
         await assert.eventually.isTrue(accordion.isOpen());
+        await vlAccordionPage.scrollIntoView(toggleButton);
         await toggleButton.click();
         await assert.eventually.isTrue(accordion.isClosed());
     });
