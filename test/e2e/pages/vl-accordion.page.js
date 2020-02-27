@@ -1,4 +1,5 @@
 const VlAccordion = require('../components/vl-accordion');
+const { VlButton } = require('vl-ui-button').Test;
 const { Page, Config } = require('vl-ui-core').Test;
 const { By } = require('selenium-webdriver');
 
@@ -20,15 +21,15 @@ class VlAccordionPage extends Page {
     }
 
     async getJSAccordionOpenButton() {
-        return this.driver.findElement(By.css('#open-accordion'));
+        return new VlButton(this.driver, '#open-accordion');
     }
 
     async getJSAccordionCloseButton() {
-        return this.driver.findElement(By.css('#close-accordion'));
+        return new VlButton(this.driver, '#close-accordion');
     }
 
     async getJSAccordionToggleButton() {
-        return this.driver.findElement(By.css('#toggle-accordion'));
+        return new VlButton(this.driver, '#toggle-accordion');
     }
 
     async load() {

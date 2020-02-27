@@ -1,8 +1,8 @@
-import { VlElement, define } from '/node_modules/vl-ui-core/vl-core.js';
-import '/node_modules/vl-ui-button/vl-button.js';
-import '/node_modules/vl-ui-icon/vl-icon.js';
-import '/node_modules/@govflanders/vl-ui-util/dist/js/util.min.js';
-import '/dist/accordion.js';
+import { VlElement, define } from '/node_modules/vl-ui-core/dist/vl-core.js';
+import '/node_modules/vl-ui-button/dist/vl-button.js';
+import '/node_modules/vl-ui-icon/dist/vl-icon.js';
+import '/node_modules/@govflanders/vl-ui-util/dist/js/util.js';
+import '/lib/accordion.js';
 
 /**
  * VlAccordion
@@ -28,7 +28,7 @@ export class VlAccordion extends VlElement(HTMLElement) {
     constructor() {
         super(`
             <style>
-                @import '/style.css';
+                @import '/src/style.css';
             </style>
 
             <div class="js js-vl-accordion">
