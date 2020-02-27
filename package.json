@@ -46,7 +46,7 @@
   "dependencies": {
     "@govflanders/vl-ui-accordion": "3.9.1",
     "vl-ui-button": "^4.0.0",
-    "vl-ui-core": "^5.0.1",
+    "vl-ui-core": "^5.0.3",
     "vl-ui-icon": "^4.0.0"
   },
   "peerDependencies": {

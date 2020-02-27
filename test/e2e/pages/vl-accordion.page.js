@@ -34,8 +34,7 @@ class VlAccordionPage extends Page {
 
   async _clickJSAccordionButton(selector) {
       const button = await new VlButton(this.driver, selector);
-      await this.driver.executeScript('return arguments[0].scrollIntoView()',
-          button);
+      await button.scrollIntoView();
       return button.click();
   }
 
