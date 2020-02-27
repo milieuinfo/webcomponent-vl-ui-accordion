@@ -32,12 +32,11 @@ class VlAccordionPage extends Page {
         return this._clickJSAccordionButton('#toggle-accordion');
     }
 
-  async _clickJSAccordionButton(selector) {
-      const button = await new VlButton(this.driver, selector);
-      await button.scrollIntoView();
-      return button.click();
-  }
-
+    async _clickJSAccordionButton(selector) {
+        const button = await new VlButton(this.driver, selector);
+        await button.scrollIntoView();
+        return button.click();
+    }
 
     async load() {
         await super.load(Config.baseUrl + '/demo/vl-accordion.html');
