@@ -1,46 +1,45 @@
 const VlAccordion = require('../components/vl-accordion');
-const { VlButton } = require('vl-ui-button').Test;
-const { Page, Config } = require('vl-ui-core').Test;
-const { By } = require('selenium-webdriver');
+const {VlButton} = require('vl-ui-button').Test;
+const {Page, Config} = require('vl-ui-core').Test;
 
 class VlAccordionPage extends Page {
-    async _getAccordion(selector) {
-        return new VlAccordion(this.driver, selector);
-    }
+  async _getAccordion(selector) {
+    return new VlAccordion(this.driver, selector);
+  }
 
-    async getStandaardAccordion() {
-        return this._getAccordion('#accordion-1');
-    }
+  async getStandaardAccordion() {
+    return this._getAccordion('#accordion-1');
+  }
 
-    async getDynamischeAccordion() {
-        return this._getAccordion('#accordion-2');
-    }
+  async getDynamischeAccordion() {
+    return this._getAccordion('#accordion-2');
+  }
 
-    async getJSAccordion() {
-        return this._getAccordion('#accordion-javascript-toggle');
-    }
+  async getJSAccordion() {
+    return this._getAccordion('#accordion-javascript-toggle');
+  }
 
-    async clickJSAccordionOpenButton() {
-        return this._clickJSAccordionButton('#open-accordion');
-    }
+  async clickJSAccordionOpenButton() {
+    return this._clickJSAccordionButton('#open-accordion');
+  }
 
-    async clickJSAccordionCloseButton() {
-        return this._clickJSAccordionButton('#close-accordion');
-    }
+  async clickJSAccordionCloseButton() {
+    return this._clickJSAccordionButton('#close-accordion');
+  }
 
-    async clickJSAccordionToggleButton() {
-        return this._clickJSAccordionButton('#toggle-accordion');
-    }
+  async clickJSAccordionToggleButton() {
+    return this._clickJSAccordionButton('#toggle-accordion');
+  }
 
-    async _clickJSAccordionButton(selector) {
-        const button = await new VlButton(this.driver, selector);
-        await button.scrollIntoView();
-        return button.click();
-    }
+  async _clickJSAccordionButton(selector) {
+    const button = await new VlButton(this.driver, selector);
+    await button.scrollIntoView();
+    return button.click();
+  }
 
-    async load() {
-        await super.load(Config.baseUrl + '/demo/vl-accordion.html');
-    }
+  async load() {
+    await super.load(Config.baseUrl + '/demo/vl-accordion.html');
+  }
 }
 
 module.exports = VlAccordionPage;

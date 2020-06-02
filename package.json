@@ -46,11 +46,11 @@
   "dependencies": {
     "@govflanders/vl-ui-accordion": "3.9.2",
     "vl-ui-button": "^5.0.0",
-    "vl-ui-core": "^5.1.2",
+    "vl-ui-core": "github:milieuinfo/webcomponent-vl-ui-core",
     "vl-ui-icon": "^5.0.0"
   },
   "peerDependencies": {
-    "vl-ui-core": "^5.0.1",
+    "vl-ui-core": "github:milieuinfo/webcomponent-vl-ui-core",
     "vl-ui-button": "^5.0.0",
     "vl-ui-icon": "^5.0.0"
   },
@@ -59,6 +59,6 @@
     "@govflanders/vl-ui-link": "3.9.2",
     "@govflanders/vl-ui-toggle": "3.9.2",
     "@govflanders/vl-ui-util": "3.9.2",
-    "vl-ui-util": "github:milieuinfo/webcomponent-vl-ui-util#deleted-demo-code"
+    "vl-ui-util": "github:milieuinfo/webcomponent-vl-ui-util"
   }
 }

@@ -35,8 +35,7 @@
     <script>
       suite('<vl-accordion>', () => {
         const should = chai.should();
-        const sandbox = sinon.sandbox.create();
-
+      
         setup((done) => {
           customElements.whenDefined('vl-accordion').then(done);
         });
@@ -106,8 +105,8 @@
               open: () => {
                 done();
               },
-              dress: () => {}
-            }
+              dress: () => {},
+            },
           };
           const accordion = fixture('vl-accordion-fixture-content');
           accordion.open();
@@ -119,8 +118,8 @@
               close: () => {
                 done();
               },
-              dress: () => {}
-            }
+              dress: () => {},
+            },
           };
           const accordion = fixture('vl-accordion-fixture-content');
           accordion.close();
@@ -132,8 +131,8 @@
               toggle: () => {
                 done();
               },
-              dress: () => {}
-            }
+              dress: () => {},
+            },
           };
           const accordion = fixture('vl-accordion-fixture-content');
           accordion.toggle();
@@ -145,8 +144,8 @@
               close: () => {
                 done();
               },
-              dress: () => {}
-            }
+              dress: () => {},
+            },
           };
           const accordion = fixture('vl-accordion-fixture-content');
           accordion.close();
@@ -157,8 +156,8 @@
             accordion: {
               dress: () => {
                 done();
-              }
-            }
+              },
+            },
           };
           const newAccordion = document.createElement('vl-accordion');
           document.body.appendChild(newAccordion);
