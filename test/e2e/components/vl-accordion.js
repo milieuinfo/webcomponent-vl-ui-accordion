@@ -14,8 +14,7 @@ class VlAccordion extends VlElement {
   }
 
   async linkText() {
-    return (await this.shadowRoot.findElement +
-      (By.css('.js-vl-accordion__toggle__text'))).getText();
+    return (await this.shadowRoot.findElement(By.css('.js-vl-accordion__toggle__text'))).getText();
   }
 
   async toggle() {
