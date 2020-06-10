@@ -1,7 +1,7 @@
-import {vlElement, define} from vl-ui-core;
-import vl-ui-button;
-import vl-ui-icon;
-import @govflanders/vl-ui-util/dist/js/util.js;
+import {vlElement, define} from 'vl-ui-core';
+import 'vl-ui-button';
+import 'vl-ui-icon';
+import '@govflanders/vl-ui-util/dist/js/util.js';
 import 'vl-ui-accordion/lib/accordion.js';
 
 /**
