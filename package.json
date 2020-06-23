@@ -28,6 +28,7 @@
     "test": "npm explore vl-ui-util -- npm run test:component",
     "test:grid": "npm explore vl-ui-util -- npm run test:component:grid",
     "test:unit": "npm explore vl-ui-util -- npm run test:component:unit",
+    "test:unit:grid": "npm explore vl-ui-util -- npm run test:component:unit:grid",
     "test:e2e": "npm explore vl-ui-util -- npm run test:component:e2e",
     "test:e2e:grid": "npm explore vl-ui-util -- npm run test:component:e2e:grid:all",
     "release": "npm explore vl-ui-util -- npm run release",
