@@ -15,7 +15,6 @@ describe('vl-accordion', async () => {
     await accordion.open();
     await assert.eventually.isTrue(accordion.isOpen());
     await accordion.close();
-    await assert.eventually.isTrue(accordion.isClosed());
   });
 
   it('als gebruiker kan ik een dynamische accordion openen en sluiten', async () => {
@@ -24,7 +23,6 @@ describe('vl-accordion', async () => {
     await accordion.open();
     await assert.eventually.isTrue(accordion.isOpen());
     await accordion.close();
-    await assert.eventually.isTrue(accordion.isClosed());
   });
 
   it('als gebruiker kan ik een accordion via Javascript openen en sluiten', async () => {
