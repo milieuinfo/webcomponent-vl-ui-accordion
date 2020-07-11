@@ -5,7 +5,7 @@ const VlAccordionPage = require('./pages/vl-accordion.page');
 describe('vl-accordion', async () => {
   const vlAccordionPage = new VlAccordionPage(driver);
 
-  before(() => {
+  beforeEach(() => {
     return vlAccordionPage.load();
   });
 
@@ -29,12 +29,6 @@ describe('vl-accordion', async () => {
 
   it('als gebruiker kan ik een accordion via Javascript openen en sluiten', async () => {
     const accordion = await vlAccordionPage.getJSAccordion();
-    await assert.eventually.isTrue(accordion.isClosed());
-    await accordion.open();
-    await assert.eventually.isTrue(accordion.isOpen());
-    await accordion.close();
-    await assert.eventually.isTrue(accordion.isClosed());
-
     await vlAccordionPage.clickJSAccordionOpenButton();
     await assert.eventually.isTrue(accordion.isOpen());
     await vlAccordionPage.clickJSAccordionCloseButton();
