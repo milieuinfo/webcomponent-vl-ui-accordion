@@ -1,6 +1,6 @@
 const VlAccordion = require('../components/vl-accordion');
-const {VlButton} = require('vl-ui-button').Test;
 const {Page, Config} = require('vl-ui-core').Test;
+const {By} = require('vl-ui-core').Test.Setup;
 
 class VlAccordionPage extends Page {
   async _getAccordion(selector) {
@@ -32,9 +32,8 @@ class VlAccordionPage extends Page {
   }
 
   async _clickJSAccordionButton(selector) {
-    const button = await new VlButton(this.driver, selector);
-    await button.scrollIntoView();
-    return button.click();
+    const element = await this.driver.findElement(By.css(selector));
+    await element.click();
   }
 
   async load() {
