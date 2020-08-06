@@ -10,9 +10,9 @@ import '/node_modules/@govflanders/vl-ui-accordion/dist/js/accordion.js';
  * @extends HTMLElement
  * @mixes vlElement
  *
- * @property {string} toggle-text - Attribuut wordt gebruikt als tekst waarop de gebruiker kan klikken om de accordion te openen en te sluiten.
- * @property {string} open-toggle-text - Attribuut wordt gebruikt als tekst wanneer de gebruiker de accordion geopend heeft.
- * @property {string} close-toggle-text - Attribuut wordt gebruikt als tekst wanneer de gebruiker de accordion gesloten heeft.
+ * @property {string} data-vl-toggle-text - Attribuut wordt gebruikt als tekst waarop de gebruiker kan klikken om de accordion te openen en te sluiten.
+ * @property {string} data-vl-open-toggle-text - Attribuut wordt gebruikt als tekst wanneer de gebruiker de accordion geopend heeft.
+ * @property {string} data-vl-close-toggle-text - Attribuut wordt gebruikt als tekst wanneer de gebruiker de accordion gesloten heeft.
  *
  * @see {@link https://www.github.com/milieuinfo/webcomponent-vl-ui-accordion/releases/latest|Release notes}
  * @see {@link https://www.github.com/milieuinfo/webcomponent-vl-ui-accordion/issues|Issues}
@@ -71,7 +71,7 @@ export class VlAccordion extends vlElement(HTMLElement) {
   }
 
   get _dressedAttribute() {
-    return this.getAttribute('data-vl-accordion-dressed');
+    return this.getAttribute('accordion-dressed');
   }
 
   get _isDressed() {
