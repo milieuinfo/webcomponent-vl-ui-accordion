@@ -7,6 +7,7 @@
   <script src="../../../web-component-tester/browser.js"></script>
 
   <script type="module" src="../../src/vl-accordion.js"></script>
+  <script src="/node_modules/sinon/pkg/sinon.js"></script>
 </head>
 
 <body>
@@ -37,9 +38,14 @@
   <script>
     suite('vl-accordion', () => {
       const should = chai.should();
+      const sandbox = sinon.createSandbox();
     
       setup((done) => {
         customElements.whenDefined('vl-accordion').then(done);
+      });
+
+      teardown(() => {
+        sandbox.restore();
       });
 
       test('bevat een container met de juiste class zodat de stijl goed toegepast wordt', () => {
@@ -97,58 +103,35 @@
         assert.equal(slots[0].textContent, 'Dit is de content');
       });
 
-      test('kan programatorisch geopend worden', (done) => {
-        window.vl = {
-          accordion: {
-            open: () => done(),
-            dress: () => {},
-          },
-        };
+      test('kan programatorisch geopend worden', () => {
+        sandbox.spy(vl.accordion, 'open');
         const accordion = fixture('vl-accordion-fixture-content');
         accordion.open();
+        assert.isTrue(vl.accordion.open.called);
       });
 
-      test('kan programatorisch gesloten worden', (done) => {
-        window.vl = {
-          accordion: {
-            close: () => done(),
-            dress: () => {},
-          },
-        };
+      test('kan programatorisch gesloten worden', () => {
         const accordion = fixture('vl-accordion-fixture-content');
+        sandbox.spy(accordion, 'toggle');
         accordion.close();
+        assert.isFalse(accordion.toggle.called);
+        accordion.open();
+        accordion.close();
+        assert.isTrue(accordion.toggle.called);
       });
 
-      test('kan programatorisch geopend en gesloten worden op basis van de huidige status (open of gesloten) van de accordion', (done) => {
-        window.vl = {
-          accordion: {
-            toggle: () => done(),
-            dress: () => {},
-          },
-        };
+      test('kan programatorisch geopend en gesloten worden op basis van de huidige status (open of gesloten) van de accordion', () => {
+        sandbox.spy(vl.accordion, 'toggle');
         const accordion = fixture('vl-accordion-fixture-content');
         accordion.toggle();
+        assert.isTrue(vl.accordion.toggle.called);
       });
 
-      test('kan programatorisch geopend en gesloten worden op basis van de huidige status (open of gesloten) van de accordion', (done) => {
-        window.vl = {
-          accordion: {
-            close: () => done(),
-            dress: () => {},
-          },
-        };
-        const accordion = fixture('vl-accordion-fixture-content');
-        accordion.close();
-      });
-
-      test('bij het toevoegen van een accordion element aan de DOM zal de dress functie aangeroepen worden zodat de accordion functionaliteit geactiveerd wordt', (done) => {
-        window.vl = {
-          accordion: {
-            dress: () => done(),
-          },
-        };
+      test('bij het toevoegen van een accordion element aan de DOM zal de dress functie aangeroepen worden zodat de accordion functionaliteit geactiveerd wordt', () => {
+        sandbox.spy(vl.accordion, 'dress');
         const newAccordion = document.createElement('vl-accordion');
         document.body.appendChild(newAccordion);
+        assert.isTrue(vl.accordion.dress.called);
       });
     });
   </script>
