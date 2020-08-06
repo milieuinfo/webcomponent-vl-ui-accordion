@@ -1,18 +1,6 @@
 const {VlElement} = require('vl-ui-core').Test;
-const {By} = require('selenium-webdriver');
+const {By} = require('vl-ui-core').Test.Setup;
 class VlAccordion extends VlElement {
-  async _getToggleButton() {
-    return this.shadowRoot.findElement(By.css('#accordion-toggle'));
-  }
-
-  async _content() {
-    return this.shadowRoot.findElement(By.css('#accordion-content'));
-  }
-
-  async _accordionDiv() {
-    return this.shadowRoot.findElement(By.css('div[data-vl-accordion]'));
-  }
-
   async linkText() {
     return (await this.shadowRoot.findElement(By.css('.js-vl-accordion__toggle__text'))).getText();
   }
@@ -40,8 +28,20 @@ class VlAccordion extends VlElement {
 
   async contentSlotElements() {
     const slottedContent = await (await this._content()).findElement(By.css('#accordion-slot'));
-    const slottedElements = await this.driver.executeScript('return arguments[0].assignedElements()', slottedContent);
+    const slottedElements = await this.getAssignedElements(slottedContent);
     return Promise.all(slottedElements.map((slot) => new VlElement(this.driver, slot)));
+  }
+
+  async _getToggleButton() {
+    return this.shadowRoot.findElement(By.css('button'));
+  }
+
+  async _content() {
+    return this.shadowRoot.findElement(By.css('.vl-accordion__content'));
+  }
+
+  async _accordionDiv() {
+    return this.shadowRoot.findElement(By.css('div[data-vl-accordion]'));
   }
 }
 
