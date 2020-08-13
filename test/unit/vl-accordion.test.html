@@ -1,168 +1,140 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <script src="../../../@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
-    <script src="../../../web-component-tester/browser.js"></script>
 
-    <script type="module" src="../../src/vl-accordion.js"></script>
-  </head>
-  <body>
-    <test-fixture id="vl-accordion-fixture">
-      <template>
-        <vl-accordion></vl-accordion>
-      </template>
-    </test-fixture>
+<head>
+  <meta charset="utf-8">
+  <script src="../../../@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../../web-component-tester/browser.js"></script>
 
-    <test-fixture id="vl-accordion-fixture-title">
-      <template>
-        <vl-accordion toggle-text="Dit is de titel"></vl-accordion>
-      </template>
-    </test-fixture>
+  <script type="module" src="../../src/vl-accordion.js"></script>
+  <script src="/node_modules/sinon/pkg/sinon.js"></script>
+</head>
 
-    <test-fixture id="vl-accordion-fixture-titles">
-      <template>
-        <vl-accordion open-toggle-text="Dit is de open titel" close-toggle-text="Dit is de gesloten titel"></vl-accordion>
-      </template>
-    </test-fixture>
+<body>
+  <test-fixture id="vl-accordion-fixture">
+    <template>
+      <vl-accordion></vl-accordion>
+    </template>
+  </test-fixture>
 
-    <test-fixture id="vl-accordion-fixture-content">
-      <template>
-        <vl-accordion><span>Dit is de content</span></vl-accordion>
-      </template>
-    </test-fixture>
+  <test-fixture id="vl-accordion-fixture-title">
+    <template>
+      <vl-accordion toggle-text="Dit is de titel"></vl-accordion>
+    </template>
+  </test-fixture>
 
-    <script>
-      suite('<vl-accordion>', () => {
-        const should = chai.should();
-      
-        setup((done) => {
-          customElements.whenDefined('vl-accordion').then(done);
-        });
+  <test-fixture id="vl-accordion-fixture-titles">
+    <template>
+      <vl-accordion open-toggle-text="Dit is de open titel" close-toggle-text="Dit is de gesloten titel"></vl-accordion>
+    </template>
+  </test-fixture>
 
-        test('bevat een container met de juiste class zodat de stijl goed toegepast wordt', () => {
-          const accordion = fixture('vl-accordion-fixture');
-          accordion.classList.contains('js');
-        });
+  <test-fixture id="vl-accordion-fixture-content">
+    <template>
+      <vl-accordion><span>Dit is de content</span></vl-accordion>
+    </template>
+  </test-fixture>
 
-        test('bevat een accordion container', () => {
-          const accordion = fixture('vl-accordion-fixture');
-          should.exist(accordion.shadowRoot.querySelector('[data-vl-accordion-toggle]'));
-        });
-
-        test('bevat een toggle knop en titel om de accordion te openen en te sluiten', () => {
-          const accordion = fixture('vl-accordion-fixture');
-          const button = accordion.shadowRoot.querySelector('button');
-          const icon = button.querySelector('[is="vl-icon"]');
-          const title = accordion.shadowRoot.querySelector('span:not([is="vl-icon"]');
-
-          should.exist(button);
-          assert.isDefined(button.getAttribute('data-vl-accordion-toggle'));
-          assert.isTrue(button.classList.contains('vl-toggle'));
-          assert.isTrue(button.classList.contains('vl-link'));
-          assert.isTrue(button.classList.contains('vl-link--bold'));
-
-          should.exist(icon);
-          assert.equal(icon.getAttribute('icon'), 'arrow-right-fat');
-          assert.isDefined(icon.getAttribute('before'));
-
-          should.exist(title);
-        });
-
-        test('bevat een container voor de accordion content', () => {
-          const accordion = fixture('vl-accordion-fixture');
-          const content = accordion.shadowRoot.querySelector('.vl-accordion__content');
-          const panel = content.querySelector('.vl-accordion__panel');
-          should.exist(content);
-          should.exist(panel);
-        });
-
-        test('het titel attribuut wordt als titel gevisualiseerd', () => {
-          const accordion = fixture('vl-accordion-fixture-title');
-          const title = accordion.shadowRoot.querySelector('span:not([is="vl-icon"]');
-          assert.equal(title.innerText, 'Dit is de titel');
-        });
-
-        test('de titel kan gewijzigd worden op basis van de open of gesloten toestand van de accordion', () => {
-          const accordion = fixture('vl-accordion-fixture-titles');
-          const title = accordion.shadowRoot.querySelector('span:not([is="vl-icon"]');
-          assert.isTrue(title.classList.contains('js-vl-accordion__toggle__text'));
-          assert.equal(title.getAttribute('data-vl-accordion-open-text'), 'Dit is de open titel');
-          assert.equal(title.getAttribute('data-vl-accordion-close-text'), 'Dit is de gesloten titel');
-        });
-
-        test('het slot element wordt in de content container gevisualiseerd', () => {
-          const accordion = fixture('vl-accordion-fixture-content');
-          const content = accordion.shadowRoot.querySelector('.vl-accordion__content');
-          const panel = content.querySelector('.vl-accordion__panel');
-          const slots = panel.querySelector('slot').assignedNodes();
-          assert.equal(slots[0].textContent, 'Dit is de content');
-        });
-
-        test('kan programatorisch geopend worden', (done) => {
-          window.vl = {
-            accordion: {
-              open: () => {
-                done();
-              },
-              dress: () => {},
-            },
-          };
-          const accordion = fixture('vl-accordion-fixture-content');
-          accordion.open();
-        });
-
-        test('kan programatorisch gesloten worden', (done) => {
-          window.vl = {
-            accordion: {
-              close: () => {
-                done();
-              },
-              dress: () => {},
-            },
-          };
-          const accordion = fixture('vl-accordion-fixture-content');
-          accordion.close();
-        });
-
-        test('kan programatorisch geopend en gesloten worden op basis van de huidige status (open of gesloten) van de accordion', (done) => {
-          window.vl = {
-            accordion: {
-              toggle: () => {
-                done();
-              },
-              dress: () => {},
-            },
-          };
-          const accordion = fixture('vl-accordion-fixture-content');
-          accordion.toggle();
-        });
-
-        test('kan programatorisch geopend en gesloten worden op basis van de huidige status (open of gesloten) van de accordion', (done) => {
-          window.vl = {
-            accordion: {
-              close: () => {
-                done();
-              },
-              dress: () => {},
-            },
-          };
-          const accordion = fixture('vl-accordion-fixture-content');
-          accordion.close();
-        });
-
-        test('bij het toevoegen van een accordion element aan de DOM zal de dress functie aangeroepen worden zodat de accordion functionaliteit geactiveerd wordt', (done) => {
-          window.vl = {
-            accordion: {
-              dress: () => {
-                done();
-              },
-            },
-          };
-          const newAccordion = document.createElement('vl-accordion');
-          document.body.appendChild(newAccordion);
-        });
+  <script>
+    suite('vl-accordion', () => {
+      const should = chai.should();
+      const sandbox = sinon.createSandbox();
+    
+      setup((done) => {
+        customElements.whenDefined('vl-accordion').then(done);
       });
-    </script>
-  </body>
+
+      teardown(() => {
+        sandbox.restore();
+      });
+
+      test('bevat een container met de juiste class zodat de stijl goed toegepast wordt', () => {
+        const accordion = fixture('vl-accordion-fixture');
+        accordion.classList.contains('js');
+      });
+
+      test('bevat een accordion container', () => {
+        const accordion = fixture('vl-accordion-fixture');
+        should.exist(accordion.shadowRoot.querySelector('[data-vl-accordion-toggle]'));
+      });
+
+      test('bevat een toggle knop en titel om de accordion te openen en te sluiten', () => {
+        const accordion = fixture('vl-accordion-fixture');
+        const button = accordion._buttonElement;
+        const icon = button.querySelector('i');
+        const title = accordion._titleElement;
+
+        should.exist(button);
+        assert.isDefined(button.getAttribute('data-vl-accordion-toggle'));
+        assert.isTrue(button.classList.contains('vl-toggle'));
+        assert.isTrue(button.classList.contains('vl-link'));
+        assert.isTrue(button.classList.contains('vl-link--bold'));
+        should.exist(icon);
+        should.exist(title);
+      });
+
+      test('bevat een container voor de accordion content', () => {
+        const accordion = fixture('vl-accordion-fixture');
+        const content = accordion.shadowRoot.querySelector('.vl-accordion__content');
+        const panel = content.querySelector('.vl-accordion__panel');
+        should.exist(content);
+        should.exist(panel);
+      });
+
+      test('het titel attribuut wordt als titel gevisualiseerd', () => {
+        const accordion = fixture('vl-accordion-fixture-title');
+        const title = accordion._titleElement;
+        assert.equal(title.innerText, 'Dit is de titel');
+      });
+
+      test('de titel kan gewijzigd worden op basis van de open of gesloten toestand van de accordion', () => {
+        const accordion = fixture('vl-accordion-fixture-titles');
+        const title = accordion._titleElement;
+        assert.isTrue(title.classList.contains('js-vl-accordion__toggle__text'));
+        assert.equal(title.getAttribute('data-vl-accordion-open-text'), 'Dit is de open titel');
+        assert.equal(title.getAttribute('data-vl-accordion-close-text'), 'Dit is de gesloten titel');
+      });
+
+      test('het slot element wordt in de content container gevisualiseerd', () => {
+        const accordion = fixture('vl-accordion-fixture-content');
+        const content = accordion.shadowRoot.querySelector('.vl-accordion__content');
+        const panel = content.querySelector('.vl-accordion__panel');
+        const slots = panel.querySelector('slot').assignedNodes();
+        assert.equal(slots[0].textContent, 'Dit is de content');
+      });
+
+      test('kan programatorisch geopend worden', () => {
+        sandbox.spy(vl.accordion, 'open');
+        const accordion = fixture('vl-accordion-fixture-content');
+        accordion.open();
+        assert.isTrue(vl.accordion.open.called);
+      });
+
+      test('kan programatorisch gesloten worden', () => {
+        const accordion = fixture('vl-accordion-fixture-content');
+        sandbox.spy(accordion, 'toggle');
+        accordion.close();
+        assert.isFalse(accordion.toggle.called);
+        accordion.open();
+        accordion.close();
+        assert.isTrue(accordion.toggle.called);
+      });
+
+      test('kan programatorisch geopend en gesloten worden op basis van de huidige status (open of gesloten) van de accordion', () => {
+        sandbox.spy(vl.accordion, 'toggle');
+        const accordion = fixture('vl-accordion-fixture-content');
+        accordion.toggle();
+        assert.isTrue(vl.accordion.toggle.called);
+      });
+
+      test('bij het toevoegen van een accordion element aan de DOM zal de dress functie aangeroepen worden zodat de accordion functionaliteit geactiveerd wordt', () => {
+        sandbox.spy(vl.accordion, 'dress');
+        const newAccordion = document.createElement('vl-accordion');
+        document.body.appendChild(newAccordion);
+        assert.isTrue(vl.accordion.dress.called);
+      });
+    });
+  </script>
+</body>
+
 </html>

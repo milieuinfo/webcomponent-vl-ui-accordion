@@ -11,6 +11,11 @@
 // ==========================================================================
 // Components
 // ==========================================================================
-@import "vl-ui-accordion/src/scss/accordion";
-@import "vl-ui-toggle/src/scss/toggle";
 @import "vl-ui-link/src/scss/link";
+@import "vl-ui-toggle/src/scss/toggle";
+@import "vl-ui-accordion/src/scss/accordion";
+
+// ==========================================================================
+// Util
+// ==========================================================================
+@import "vl-ui-util/src/scss/util";
