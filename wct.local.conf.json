@@ -4,10 +4,10 @@
     "plugins": {
         "local": {
             "browsers": ["chrome", "firefox"]
-        },
-        "wct-xunit": {
-            
-        }
+        },    
+        "xunit-reporter": {
+            "output": "../../test/wct-results.xml"
+          }
     },
     "suites": ["test/unit/*.test.html"]
   }
