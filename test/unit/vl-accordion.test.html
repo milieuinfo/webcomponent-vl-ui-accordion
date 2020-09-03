@@ -31,7 +31,7 @@
 
   <test-fixture id="vl-accordion-fixture-content">
     <template>
-      <vl-accordion><span>Dit is de content</span></vl-accordion>
+      <vl-accordion><span>Dit is de <a href="#link">content</a></span></vl-accordion>
     </template>
   </test-fixture>
 
@@ -132,6 +132,18 @@
         const newAccordion = document.createElement('vl-accordion');
         document.body.appendChild(newAccordion);
         assert.isTrue(vl.accordion.dress.called);
+      });
+
+      test('content click events worden niet tegengehouden', (done) => {
+        const accordion = fixture('vl-accordion-fixture-content');
+        const link = accordion.querySelector('a');
+        link.addEventListener('click', () => {
+          setTimeout(() => {
+            assert.include(document.location.href, '#link');
+            done();
+          });
+        });
+        link.click();
       });
     });
   </script>
