@@ -1,6 +1,6 @@
 import {vlElement, define} from 'vl-ui-core';
 import '@govflanders/vl-ui-util/dist/js/util.js';
-import '@govflanders/vl-ui-accordion/dist/js/accordion.js';
+import 'vl-ui-accordion/lib/accordion.js';
 
 /**
  * VlAccordion
