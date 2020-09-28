@@ -19,3 +19,11 @@
 // Util
 // ==========================================================================
 @import "vl-ui-util/src/scss/util";
+
+.vl-accordion__content {
+  .js-vl-accordion--open > & {
+    .js & {
+      max-height: 100%;
+    }
+  }
+}
