@@ -51,6 +51,6 @@
     "vl-ui-action-group": "^3.1.0",
     "vl-ui-body": "^1.0.5",
     "vl-ui-button": "^5.0.6",
-    "vl-ui-util": "^5.3.0"
+    "vl-ui-util": "^5.3.1"
   }
 }
