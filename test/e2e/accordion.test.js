@@ -1,11 +1,14 @@
 
-const {assert, driver} = require('vl-ui-core').Test.Setup;
+const {assert, getDriver} = require('vl-ui-core').Test.Setup;
 const VlAccordionPage = require('./pages/vl-accordion.page');
 
 describe('vl-accordion', async () => {
-  const vlAccordionPage = new VlAccordionPage(driver);
+  let driver;
+  let vlAccordionPage;
 
   beforeEach(() => {
+    driver = getDriver();
+    vlAccordionPage = new VlAccordionPage(driver);
     return vlAccordionPage.load();
   });
 
