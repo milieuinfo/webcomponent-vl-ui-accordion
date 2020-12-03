@@ -67,6 +67,7 @@
         assert.isTrue(button.classList.contains('vl-link--bold'));
         should.exist(icon);
         should.exist(title);
+        assert.isTrue(title.classList.contains('vl-accordion__title'));
       });
 
       test('bevat een container voor de accordion content', () => {
