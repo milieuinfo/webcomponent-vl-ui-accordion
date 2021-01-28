@@ -1,3 +1,1 @@
-module.exports = {
-  VlAccordion: require('../dist/vl-accordion.src.js').VlAccordion,
-};
+export * from '../dist/vl-accessibility.src.js';
