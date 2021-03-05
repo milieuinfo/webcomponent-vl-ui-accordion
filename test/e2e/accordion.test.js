@@ -21,6 +21,11 @@ describe('vl-accordion', async () => {
     await assert.eventually.isTrue(accordion.isClosed());
   });
 
+  it('als gebruiker kan ik de titel zien van een standaard accordion', async () => {
+    const accordion = await vlAccordionPage.getStandaardAccordion();
+    await assert.eventually.equal(accordion.linkText(), 'Lees meer over de onderwijsdoelstelling');
+  });
+
   it('als gebruiker kan ik een dynamische accordion openen en sluiten', async () => {
     const accordion = await vlAccordionPage.getDynamischeAccordion();
     await assert.eventually.isTrue(accordion.isClosed());

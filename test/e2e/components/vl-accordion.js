@@ -2,7 +2,7 @@ const {VlElement} = require('vl-ui-core').Test;
 const {By} = require('vl-ui-core').Test.Setup;
 class VlAccordion extends VlElement {
   async linkText() {
-    return (await this.shadowRoot.findElement(By.css('.js-vl-accordion__toggle__text'))).getText();
+    return (await this.shadowRoot.findElement(By.css('.vl-accordion__title'))).getText();
   }
 
   async toggle() {
