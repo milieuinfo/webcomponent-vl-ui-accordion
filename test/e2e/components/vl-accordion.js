@@ -4,7 +4,7 @@ class VlAccordion extends VlElement {
   async linkText() {
     return await this.titleText();
   }
-  
+
   async titleText() {
     return (await this.shadowRoot.findElement(By.css('.vl-accordion__title'))).getText();
   }
