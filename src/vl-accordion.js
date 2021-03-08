@@ -48,7 +48,7 @@ export class VlAccordion extends vlElement(HTMLElement) {
 
   connectedCallback() {
     this.dress();
-    this._titleElement.addEventListener('click', () => this._buttonElement.click());
+    this._titleElement.addEventListener('click', () => this.click());
   }
 
   get _accordionElement() {
