@@ -6,7 +6,7 @@ class VlAccordion extends VlElement {
   }
 
   async titleText() {
-    const element = (await this._getTitleSlotElements())[0];
+    const element = (await this.getTitleSlotElements())[0];
     if (element) {
       return element.getText();
     } else {
@@ -19,13 +19,18 @@ class VlAccordion extends VlElement {
     return this.shadowRoot.findElement(By.css('slot[name="title"]'));
   }
 
-  async _getTitleSlotElements() {
+  async getTitleSlotElements() {
     const slot = await this._getTitleSlot();
     return this.getAssignedElements(slot);
   }  
   
   async toggle() {
-    return (await this._getToggleButton()).click();
+    const element = (await this.getTitleSlotElements())[0];
+    if (element) {
+    	return element.click();
+    } else {
+    	return (await this._getToggleButton()).click();
+    }
   }
 
   async open() {
@@ -61,6 +66,11 @@ class VlAccordion extends VlElement {
 
   async _accordionDiv() {
     return this.shadowRoot.findElement(By.css('div[data-vl-accordion]'));
+  }
+  
+  async isContentShown() {
+	  const firstContent = (await this.contentSlotElements())[0];
+	  return firstContent.isDisplayed();
   }
 }
 
