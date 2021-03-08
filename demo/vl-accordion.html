@@ -27,7 +27,7 @@
         
         <vl-demo data-vl-title="Accordion met titel slot">
             <vl-accordion id="accordion-titel-slot">
-                <span slot="title">Titel via slot</span>
+                <span slot="title">Lees meer over de onderwijsdoelstelling</span>
                 <span>Onderwijs helpt jonge mensen en volwassenen om zichzelf te ontwikkelen en hun weg te vinden in onze samenleving. Het hoger onderwijs speelt daarnaast een belangrijke rol in innovatie dankzij het belang van wetenschappelijk onderzoek.</span>
             </vl-accordion>
         </vl-demo>
@@ -50,17 +50,17 @@
             </div>
         </vl-demo>
 
-        <vl-demo data-vl-title="Accordion dynamische attributen">
+        <vl-demo data-vl-title="Accordion dynamische toggle via dynamische attributen">
             <vl-accordion id="accordion-dynamic-attributen">
                 <span>Onderwijs helpt jonge mensen en volwassenen om zichzelf te ontwikkelen en hun weg te vinden in onze samenleving. Het hoger onderwijs speelt daarnaast een belangrijke rol in innovatie dankzij het belang van wetenschappelijk onderzoek.</span>
             </vl-accordion>
+            
+            <script type="text/javascript">
+                document.querySelector('#accordion-dynamic-attributen').setAttribute('data-vl-toggle-text', 'Open de onderwijsdoelstelling');
+                document.querySelector('#accordion-dynamic-attributen').setAttribute('data-vl-open-toggle-text', 'Open de onderwijsdoelstelling');
+                document.querySelector('#accordion-dynamic-attributen').setAttribute('data-vl-close-toggle-text', 'Sluit de onderwijsdoelstelling');
+            </script>
         </vl-demo>
-
-        <script type="text/javascript">
-          document.querySelector('#accordion-dynamic-attributen').setAttribute('data-vl-toggle-text', 'Dynamisch attribuut');
-          document.querySelector('#accordion-dynamic-attributen').setAttribute('data-vl-open-toggle-text', 'Dynamisch attribuut open');
-          document.querySelector('#accordion-dynamic-attributen').setAttribute('data-vl-close-toggle-text', 'Dynamisch attribuut close');
-        </script>
 
     </vl-demo-page>
 </body>
