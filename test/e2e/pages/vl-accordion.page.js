@@ -8,11 +8,11 @@ class VlAccordionPage extends Page {
   }
 
   async getStandaardAccordion() {
-    return this._getAccordion('#accordion-1');
+    return this._getAccordion('#accordion-standard');
   }
 
   async getDynamischeAccordion() {
-    return this._getAccordion('#accordion-2');
+    return this._getAccordion('#accordion-dynamic-toggle');
   }
 
   async getJSAccordion() {

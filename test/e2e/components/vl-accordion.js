@@ -6,9 +6,24 @@ class VlAccordion extends VlElement {
   }
 
   async titleText() {
-    return (await this.shadowRoot.findElement(By.css('.vl-accordion__title'))).getText();
+    const element = (await this._getTitleSlotElements())[0];
+    if (element) {
+      return element.getText();
+    } else {
+      const slot = await this._getTitleSlot();
+      return slot.getTextContent();
+    }
   }
 
+  async _getTitleSlot() {
+    return this.shadowRoot.findElement(By.css('slot[name="title"]'));
+  }
+
+  async _getTitleSlotElements() {
+    const slot = await this._getTitleSlot();
+    return this.getAssignedElements(slot);
+  }  
+  
   async toggle() {
     return (await this._getToggleButton()).click();
   }

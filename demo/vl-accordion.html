@@ -19,21 +19,21 @@
 
 <body is="vl-body">
     <vl-demo-page data-vl-webcomponent="vl-accordion" data-vl-link="https://overheid.vlaanderen.be/webuniversum/v3/documentation/js-components/vl-ui-accordion">
-        <vl-demo data-vl-title="Accordion">
-            <vl-accordion id="accordion-1" data-vl-toggle-text="Lees meer over de onderwijsdoelstelling">
+        <vl-demo data-vl-title="Accordion standard use">
+            <vl-accordion id="accordion-standard" data-vl-toggle-text="Lees meer over de onderwijsdoelstelling">
                 <span>Onderwijs helpt jonge mensen en volwassenen om zichzelf te ontwikkelen en hun weg te vinden in onze samenleving. Het hoger onderwijs speelt daarnaast een belangrijke rol in innovatie dankzij het belang van wetenschappelijk onderzoek.</span>
             </vl-accordion>
         </vl-demo>
-
-        <vl-demo data-vl-title="Accordion met title slot">
-            <vl-accordion id="accordion-1">
-                <span slot="title">foobarreke</span>
+        
+        <vl-demo data-vl-title="Accordion met titel slot">
+            <vl-accordion id="accordion-titel-slot">
+                <span slot="title">Titel via slot</span>
                 <span>Onderwijs helpt jonge mensen en volwassenen om zichzelf te ontwikkelen en hun weg te vinden in onze samenleving. Het hoger onderwijs speelt daarnaast een belangrijke rol in innovatie dankzij het belang van wetenschappelijk onderzoek.</span>
             </vl-accordion>
         </vl-demo>
 
         <vl-demo data-vl-title="Accordion dynamische toggle">
-            <vl-accordion id="accordion-2" data-vl-toggle-text="Open de onderwijsdoelstelling" data-vl-open-toggle-text="Open de onderwijsdoelstelling" data-vl-close-toggle-text="Sluit de onderwijsdoelstelling">
+            <vl-accordion id="accordion-dynamic-toggle" data-vl-toggle-text="Open de onderwijsdoelstelling" data-vl-open-toggle-text="Open de onderwijsdoelstelling" data-vl-close-toggle-text="Sluit de onderwijsdoelstelling">
                 <span>Onderwijs helpt jonge mensen en volwassenen om zichzelf te ontwikkelen en hun weg te vinden in onze samenleving. Het hoger onderwijs speelt daarnaast een belangrijke rol in innovatie dankzij het belang van wetenschappelijk onderzoek.</span>
             </vl-accordion>
         </vl-demo>
@@ -49,6 +49,19 @@
                 <button id="toggle-accordion" is="vl-button" onclick="document.querySelector('#accordion-javascript-toggle').toggle()">Toggle</button>
             </div>
         </vl-demo>
+
+        <vl-demo data-vl-title="Accordion dynamische attributen">
+            <vl-accordion id="accordion-dynamic-attributen">
+                <span>Onderwijs helpt jonge mensen en volwassenen om zichzelf te ontwikkelen en hun weg te vinden in onze samenleving. Het hoger onderwijs speelt daarnaast een belangrijke rol in innovatie dankzij het belang van wetenschappelijk onderzoek.</span>
+            </vl-accordion>
+        </vl-demo>
+
+        <script type="text/javascript">
+        	document.querySelector("#accordion-dynamic-attributen").setAttribute("data-vl-toggle-text", "Dynamisch attribuut");
+        	document.querySelector("#accordion-dynamic-attributen").setAttribute("data-vl-open-toggle-text", "Dynamisch attribuut open");
+        	document.querySelector("#accordion-dynamic-attributen").setAttribute("data-vl-close-toggle-text", "Dynamisch attribuut close");
+        </script>
+
     </vl-demo-page>
 </body>
 
