@@ -49,18 +49,18 @@ export class VlAccordion extends vlElement(HTMLElement) {
   connectedCallback() {
     this.dress();
     if (this._hasTitleSlot()) {
-    	this._propagateTitleSlotClickToAccordion();
+      this._propagateTitleSlotClickToAccordion();
     }
   }
-  
+
   _propagateTitleSlotClickToAccordion() {
-	  this._titleElement.addEventListener('click', () =>  this._buttonElement.click());
+    this._titleElement.addEventListener('click', () => this._buttonElement.click());
   }
-  
+
   _hasTitleSlot() {
-	  return this._titleElement.assignedElements().length > 0;
+    return this._titleElement.assignedElements().length > 0;
   }
-  
+
   get _accordionElement() {
     return this._element.querySelector('[data-vl-accordion]');
   }

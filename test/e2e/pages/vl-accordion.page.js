@@ -12,13 +12,13 @@ class VlAccordionPage extends Page {
   }
 
   async getAccordionMetTitleSlot() {
-	  return this._getAccordion('#accordion-titel-slot');
+    return this._getAccordion('#accordion-titel-slot');
   }
-  
+
   async getDynamischeAccordion() {
     return this._getAccordion('#accordion-dynamic-toggle');
   }
-  
+
   async getAccordionMetDynamischeAttributen() {
     return this._getAccordion('#accordion-dynamic-attributen');
   }

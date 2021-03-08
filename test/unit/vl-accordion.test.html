@@ -38,8 +38,8 @@
   <test-fixture id="vl-accordion-fixture-titel-slot">
     <template>
       <vl-accordion>
-      	<span slot="title">Titel via slot</span>
-      	<span>dit is de inhoud</span>
+        <span slot="title">Titel via slot</span>
+        <span>dit is de inhoud</span>
       </vl-accordion>
     </template>
   </test-fixture>
@@ -151,11 +151,11 @@
         });
         link.click();
       });
-      
+
       test('Titel kan ook via slot toegevoegd worden', () => {
         const accordion = fixture('vl-accordion-fixture-titel-slot');
-        const titel = accordion.shadowRoot.querySelector("button").querySelector('slot[name="title"]').assignedElements()[0];
-        assert.equal(titel.textContent, "Titel via slot");
+        const titel = accordion.shadowRoot.querySelector('button').querySelector('slot[name="title"]').assignedElements()[0];
+        assert.equal(titel.textContent, 'Titel via slot');
       });
     });
   </script>

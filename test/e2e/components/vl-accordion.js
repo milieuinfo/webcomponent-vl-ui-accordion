@@ -22,14 +22,14 @@ class VlAccordion extends VlElement {
   async getTitleSlotElements() {
     const slot = await this._getTitleSlot();
     return this.getAssignedElements(slot);
-  }  
-  
+  }
+
   async toggle() {
     const element = (await this.getTitleSlotElements())[0];
     if (element) {
-    	return element.click();
+      return element.click();
     } else {
-    	return (await this._getToggleButton()).click();
+      return (await this._getToggleButton()).click();
     }
   }
 
@@ -67,10 +67,10 @@ class VlAccordion extends VlElement {
   async _accordionDiv() {
     return this.shadowRoot.findElement(By.css('div[data-vl-accordion]'));
   }
-  
+
   async isContentShown() {
-	  const firstContent = (await this.contentSlotElements())[0];
-	  return firstContent.isDisplayed();
+    const firstContent = (await this.contentSlotElements())[0];
+    return firstContent.isDisplayed();
   }
 }
 

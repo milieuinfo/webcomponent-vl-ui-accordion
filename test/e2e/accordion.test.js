@@ -13,8 +13,8 @@ describe('vl-accordion', async () => {
   });
 
   it('als gebruiker kan ik een standaard accordion openen en sluiten', async () => {
-	const accordion = await vlAccordionPage.getStandaardAccordion();
-	await assertAccordionCanBeOpenedAndClosed(accordion);
+    const accordion = await vlAccordionPage.getStandaardAccordion();
+    await assertAccordionCanBeOpenedAndClosed(accordion);
   });
 
   it('als gebruiker kan ik de titel zien van een standaard accordion', async () => {
@@ -24,24 +24,24 @@ describe('vl-accordion', async () => {
 
   it('als gebruiker kan ik een dynamische accordion openen en sluiten', async () => {
     const accordion = await vlAccordionPage.getDynamischeAccordion();
-	await assertAccordionCanBeOpenedAndClosed(accordion);
+    await assertAccordionCanBeOpenedAndClosed(accordion);
   });
 
   it('als gebruiker kan ik een accordion via Javascript openen en sluiten', async () => {
     const accordion = await vlAccordionPage.getJSAccordion();
-    
+
     await vlAccordionPage.clickJSAccordionOpenButton();
     await assert.eventually.isTrue(accordion.isOpen());
     await assert.eventually.isTrue(accordion.isContentShown());
-    
+
     await vlAccordionPage.clickJSAccordionCloseButton();
     await assert.eventually.isTrue(accordion.isClosed());
     await assert.eventually.isFalse(accordion.isContentShown());
-    
+
     await vlAccordionPage.clickJSAccordionToggleButton();
     await assert.eventually.isTrue(accordion.isOpen());
     await assert.eventually.isTrue(accordion.isContentShown());
-    
+
     await vlAccordionPage.clickJSAccordionToggleButton();
     await assert.eventually.isTrue(accordion.isClosed());
     await assert.eventually.isFalse(accordion.isContentShown());
@@ -62,23 +62,23 @@ describe('vl-accordion', async () => {
   });
 
   it('als gebruiker kan ik een accordion met title slot openen en sluiten', async () => {
-	const accordion = await vlAccordionPage.getAccordionMetTitleSlot();
-	await assertAccordionCanBeOpenedAndClosed(accordion);
+    const accordion = await vlAccordionPage.getAccordionMetTitleSlot();
+    await assertAccordionCanBeOpenedAndClosed(accordion);
   });
 
   it('als gebruiker kan ik een accordion met dynamische toggle text openen en sluiten', async () => {
-	  const accordion = await vlAccordionPage.getAccordionMetDynamischeAttributen();
-	  await assertAccordionCanBeOpenedAndClosed(accordion);
+    const accordion = await vlAccordionPage.getAccordionMetDynamischeAttributen();
+    await assertAccordionCanBeOpenedAndClosed(accordion);
   });
-  
+
   async function assertAccordionCanBeOpenedAndClosed(accordion) {
-	await assert.eventually.isTrue(accordion.isClosed());
-	await assert.eventually.isFalse(accordion.isContentShown());
-	await accordion.open();
-	await assert.eventually.isTrue(accordion.isOpen());
-	await assert.eventually.isTrue(accordion.isContentShown());
-	await accordion.close();
-	await assert.eventually.isTrue(accordion.isClosed());
-	await assert.eventually.isFalse(accordion.isContentShown());
+    await assert.eventually.isTrue(accordion.isClosed());
+    await assert.eventually.isFalse(accordion.isContentShown());
+    await accordion.open();
+    await assert.eventually.isTrue(accordion.isOpen());
+    await assert.eventually.isTrue(accordion.isContentShown());
+    await accordion.close();
+    await assert.eventually.isTrue(accordion.isClosed());
+    await assert.eventually.isFalse(accordion.isContentShown());
   }
 });
