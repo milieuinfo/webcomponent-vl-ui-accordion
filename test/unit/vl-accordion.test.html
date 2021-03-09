@@ -154,8 +154,7 @@
 
       test('Titel kan ook via slot toegevoegd worden', () => {
         const accordion = fixture('vl-accordion-fixture-titel-slot');
-        const titel = accordion.shadowRoot.querySelector('button').querySelector('slot[name="title"]').assignedElements()[0];
-        assert.equal(titel.textContent, 'Titel via slot');
+        assert.equal(accordion._titleElement.assignedElements()[0], accordion.querySelector('[slot="title"]'));
       });
     });
   </script>

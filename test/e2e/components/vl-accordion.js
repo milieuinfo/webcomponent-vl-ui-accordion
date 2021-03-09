@@ -21,7 +21,8 @@ class VlAccordion extends VlElement {
 
   async getTitleSlotElements() {
     const slot = await this._getTitleSlot();
-    return this.getAssignedElements(slot);
+    const slottedElements = await this.getAssignedElements(slot);
+    return Promise.all(slottedElements.map((slot) => new VlElement(this.driver, slot)));
   }
 
   async toggle() {
@@ -68,7 +69,7 @@ class VlAccordion extends VlElement {
     return this.shadowRoot.findElement(By.css('div[data-vl-accordion]'));
   }
 
-  async isContentShown() {
+  async isContentDisplayed() {
     const firstContent = (await this.contentSlotElements())[0];
     return firstContent.isDisplayed();
   }
