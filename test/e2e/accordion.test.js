@@ -58,7 +58,7 @@ describe('vl-accordion', async () => {
     assert.equal((await accordion.getTitleSlotElements()).length, 0);
   });
 
-  it.only('als gebruiker kan ik de titel zien van een accordion met title slot', async () => {
+  it('als gebruiker kan ik de titel zien van een accordion met title slot', async () => {
     const accordion = await vlAccordionPage.getAccordionMetTitleSlot();
     await assert.eventually.equal(accordion.titleText(), 'Lees meer over de onderwijsdoelstelling');
     assert.eventually.equal((await accordion.getTitleSlotElements())[0].getText(), 'Lees meer over de onderwijsdoelstelling');
