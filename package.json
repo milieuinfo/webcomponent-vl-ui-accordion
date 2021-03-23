@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "@govflanders/vl-ui-accordion": "^3.12.3",
-    "vl-ui-core": "^7.2.0"
+    "vl-ui-core": "^7.2.1"
   },
   "peerDependencies": {
     "vl-ui-core": "^7.1.0"
