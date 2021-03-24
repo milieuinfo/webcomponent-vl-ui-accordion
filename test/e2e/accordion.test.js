@@ -12,6 +12,10 @@ describe('vl-accordion', async () => {
     return vlAccordionPage.load();
   });
 
+  it('WCAG', async () => {
+    await assert.eventually.isFalse(vlAccordionPage.hasWcagIssues());
+  });
+
   it('als gebruiker kan ik een standaard accordion openen en sluiten', async () => {
     const accordion = await vlAccordionPage.getStandaardAccordion();
     await assertAccordionCanBeOpenedAndClosed(accordion);
