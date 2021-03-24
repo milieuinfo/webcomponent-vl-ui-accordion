@@ -152,7 +152,7 @@
         link.click();
       });
 
-      test('Titel kan ook via slot toegevoegd worden', () => {
+      test('titel kan ook via slot toegevoegd worden', () => {
         const accordion = fixture('vl-accordion-fixture-titel-slot');
         assert.equal(accordion._titleElement.assignedElements()[0], accordion.querySelector('[slot="title"]'));
       });

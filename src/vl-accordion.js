@@ -30,10 +30,10 @@ export class VlAccordion extends vlElement(HTMLElement) {
         @import '/src/style.css';
       </style>
 
-      <div class="js js-vl-accordion">
+      <div class="js">
         <div class="vl-accordion" data-vl-accordion>
           <button class="vl-toggle vl-link vl-link--bold" data-vl-accordion-toggle>
-            <i class="vl-link__icon vl-link__icon--before vl-toggle__icon vl-vi vl-vi-arrow-right-fat" aria-hidden="true"></i>
+            <i class="vl-accordion__icon vl-link__icon vl-link__icon--before vl-toggle__icon vl-vi vl-vi-arrow-right-fat" aria-hidden="true"></i>
             <slot name="title" class="vl-accordion__title"></slot>
           </button>
           <div class="vl-accordion__content js-vl-accordion__content">
@@ -100,7 +100,7 @@ export class VlAccordion extends vlElement(HTMLElement) {
    */
   dress() {
     if (!this._isDressed) {
-      vl.accordion.dress(this._element);
+      vl.accordion.dress(this._buttonElement);
     }
   }
 
