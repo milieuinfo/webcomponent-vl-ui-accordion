@@ -19,6 +19,10 @@ class VlAccordion extends VlElement {
     return this.shadowRoot.findElement(By.css('slot[name="title"]'));
   }
 
+  async getTitleButton() {
+    return this.shadowRoot.findElement(By.css('.vl-toggle'));
+  }
+
   async getTitleSlotElements() {
     const slot = await this._getTitleSlot();
     const slottedElements = await this.getAssignedElements(slot);
