@@ -2,7 +2,7 @@
 <html lang="nl">
 
 <head>
-    <title>vl-accordion voorbeeld</title>
+    <title>vl-accordion met inner vl-info-tile, waarbij de accordion als eerste wordt geïmporteerd</title>
     <script type="module" src="/node_modules/vl-ui-demo/dist/vl-demo-all.js"></script>
 
     <!-- LET OP! import volgorde heeft side-effect -->
@@ -20,16 +20,16 @@
 
 <body is="vl-body">
     <vl-demo-page data-vl-webcomponent="vl-accordion" data-vl-link="https://overheid.vlaanderen.be/webuniversum/v3/documentation/js-components/vl-ui-accordion">
-        <vl-demo data-vl-title="Accordion met niet werkende info-tile">
-            <vl-accordion id="accordion-met-niet-werkende-info-tile">
+        <vl-demo data-vl-title="Accordion met inner Info-tile, waarbij de accordion als eerste wordt geïmporteerd">
+            <vl-accordion id="vl-accordion-met-inner-vl-info-tile-en-accordion-als-eerste-geimporteerd">
                 <div slot="title">
-                    Accordion title (klikken op deze titel toggled accordion wel!)
+                    Accordion title (klikken op deze titel toggled de 'vl-accordion' wel!)
                 </div>
                 <div id="content">
                     <span>Accordion content:</span>
                     <div>
                         <vl-info-tile data-vl-toggleable>
-                            <span slot="title">Info-tile title (klikken op deze titel toggled info-tile niet!)</span>
+                            <span slot="title">Info-tile title (klikken op deze titel toggled de 'vl-info-tile' niet!)</span>
                             <span slot="subtitle">Info-tile subtitle</span>
                             <span slot="content">Info-tile content</span>
                         </vl-info-tile>
@@ -37,7 +37,7 @@
                 </div>
             </vl-accordion>
             </br>
-            <p>De vl-info-tile.js wordt ingeladen NA vl-accordion.js waardoor ENKEL vl-accordion werkt!</p>
+            <p>De 'vl-info-tile.js' wordt ingeladen NA de 'vl-accordion.js' waardoor ENKEL de 'vl-accordion' toggle werkt!</p>
         </vl-demo>
     </vl-demo-page>
 </body>
