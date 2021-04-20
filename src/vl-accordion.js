@@ -48,13 +48,6 @@ export class VlAccordion extends vlElement(HTMLElement) {
 
   connectedCallback() {
     this.dress();
-    if (this._hasTitleSlot()) {
-      this._propagateTitleSlotClickToAccordion();
-    }
-  }
-
-  _propagateTitleSlotClickToAccordion() {
-    this._titleElement.addEventListener('click', () => this._buttonElement.click());
   }
 
   _hasTitleSlot() {
