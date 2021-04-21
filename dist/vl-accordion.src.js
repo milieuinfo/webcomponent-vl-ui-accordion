@@ -55,7 +55,10 @@ export class VlAccordion extends vlElement(HTMLElement) {
   }
 
   _propagateTitleSlotClickToAccordion() {
-    this._titleElement.addEventListener('click', () => this._buttonElement.click());
+    this._titleElement.addEventListener('click', (event) => {
+      event.stopPropagation();
+      this._buttonElement.click();
+    });
   }
 
   _hasTitleSlot() {
