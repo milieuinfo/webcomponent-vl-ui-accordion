@@ -49,7 +49,7 @@
     "@govflanders/vl-ui-link": "^3.12.24",
     "@govflanders/vl-ui-toggle": "^3.12.17",
     "@govflanders/vl-ui-util": "^3.12.24",
-    "vl-ui-action-group": "^3.1.3",
+    "vl-ui-action-group": "^1.0.0-art-external1",
     "vl-ui-body": "^1.0.8",
     "vl-ui-button": "^5.0.10",
     "vl-ui-info-tile": "^1.1.3",
